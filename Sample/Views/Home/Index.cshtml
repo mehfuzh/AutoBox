@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
+    Time : @ViewBag.TimeStamp
+
+</p>
+
+
+@using (Html.BeginForm("UpdateTimeStamp", "Home", FormMethod.Post))
+{
+    <input type="submit" value="Invalidate Cache" />
+    <input type="button" value="Refresh" />
+}
+
+<script type="text/javascript">
+    $(function () {
+        $("input[type='button']").bind('click', function (e) {
+            window.location.reload();
+        });
+    });
+</script>

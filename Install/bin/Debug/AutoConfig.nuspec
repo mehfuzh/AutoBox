@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>AutoConfig</id>
+    <version>0.9</version>
+    <authors>Mehfuz Hossain</authors>
+    <description>Auto configure model dependencies and cache data calls without ever touching the code.</description>
+    <language>en-US</language>
+    <projectUrl>http://mehfuzh.github.com/AutoConfig/</projectUrl>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <tags>MVC, Caching, Scaffold, Configuration</tags>
+
+    <dependencies>
+
+      <dependency id="Castle.Core" version="3.0.0.2001" />
+      <dependency id="CommonServiceLocator" version="1.0" />
+      <dependency id="Newtonsoft.Json" version="4.0.3" />
+
+    </dependencies>
+    
+  </metadata>
+  
+  <files>
+    
+    <file src="..\..\Content\web.config.transform" target="content"/>
+    <file src="..\..\bin\Debug\AutoConfig.dll" target="lib/Net40"/>
+    <file src="..\..\bin\Debug\AutoConfig.XML" target="lib/Net40"/>
+    <file src="..\..\bin\Debug\BeIT.MemCached.dll" target="lib/Net40"/>
+   
+  </files>
+</package>
