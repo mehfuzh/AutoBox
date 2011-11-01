@@ -2,7 +2,7 @@
 ================================================================
 
 
-The tool dynamically injects dependencies based on interface to class convention(IAccountService to AccountService). Also, let you cache  repository calls to memcached (the most poular cross-plaform caching tool). 
+The tool dynamically injects dependencies based on convention (IAccountService to AccountService). Also, let you cache  repository calls to memcached (the most poular cross-plaform caching tool). 
 
 
 
@@ -12,7 +12,7 @@ Free & open source, high-performance, distributed memory object caching system, 
 
 Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.
 
-you find more information on this at : http://www.memcached.org/
+you will find more information on this at : http://www.memcached.org/
 
 
 ## Getting Started
