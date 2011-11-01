@@ -29,7 +29,19 @@ Lets take that you have a controller like this :
 
 	AutoBox.Init();
 
-Thats it.
+Next you need to override the __GetControllerInstance__ from DefaultControllerFactory. Since AutoBox is implemented using __CommonServiceLocator__ you just need to have the following
+code block:
+
+   	protected override IController GetControllerInstance(System.Web.Routing.RequestContext requestContext, Type controllerType)
+        {
+            return ServiceLocator.Current.GetInstance(controllerType) as IController;
+        }
+
+
+And at the end of the Global.ascx.cs you need to write this line, so that the request goes through our factory:
+
+	ControllerBuilder.Current.SetControllerFactory(new MyControllerFactory());
+
 
 Now, moving forward there is a method in IProuductRepository lets say IProductReposiroty.GetAllProducts();
 
