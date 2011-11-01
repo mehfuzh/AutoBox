@@ -16,7 +16,7 @@ namespace AutoBox.Specification
         [SetUp]
         public void BeforeEach()
         {
-            AutoBox.Init(Resolve.FromCurrentAssembly);
+            Container.Init(Resolve.FromCurrentAssembly);
         }
 
         [Test]

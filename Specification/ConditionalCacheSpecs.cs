@@ -15,7 +15,7 @@ namespace AutoBox.Specification
         [SetUp]
         public void BeforeEach()
         {
-            AutoBox.Init();
+            Container.Init();
         }
 
         [Test]
@@ -23,7 +23,7 @@ namespace AutoBox.Specification
         {
             var product = "x";
 
-            AutoBox.Setup<ProductRepository>(x => x.Create(product, 1)).Caches(TimeSpan.FromSeconds(5));
+            Container.Setup<ProductRepository>(x => x.Create(product, 1)).Caches(TimeSpan.FromSeconds(5));
 
             var repository = ServiceLocator.Current.GetInstance<ProductController>();
 
@@ -36,8 +36,8 @@ namespace AutoBox.Specification
         [Test]
         public void ShouldInvalidateCacheWhenTargetMethodWithSpecificArgumentsIsInvoked()
         {
-            AutoBox.Setup<ProductRepository>(x => x.GetAll()).Caches(TimeSpan.FromSeconds(10));
-            AutoBox.Setup<ProductRepository>(x => x.Create("x", 1)).Invalidates(x => x.GetAll());
+            Container.Setup<ProductRepository>(x => x.GetAll()).Caches(TimeSpan.FromSeconds(10));
+            Container.Setup<ProductRepository>(x => x.Create("x", 1)).Invalidates(x => x.GetAll());
 
             var controller = ServiceLocator.Current.GetInstance<ProductController>();
 
@@ -53,8 +53,8 @@ namespace AutoBox.Specification
         [Test]
         public void ShouldSkipInvalidaitonWhenTargetIsInvokedWithDifferentArgs()
         {
-            AutoBox.Setup<ProductRepository>(x => x.GetAll()).Caches(TimeSpan.FromSeconds(10));
-            AutoBox.Setup<ProductRepository>(x => x.Create("x", 1)).Invalidates(x => x.GetAll());
+            Container.Setup<ProductRepository>(x => x.GetAll()).Caches(TimeSpan.FromSeconds(10));
+            Container.Setup<ProductRepository>(x => x.Create("x", 1)).Invalidates(x => x.GetAll());
 
             var repository = ServiceLocator.Current.GetInstance<ProductController>();
 
@@ -72,8 +72,8 @@ namespace AutoBox.Specification
         {
             string product = Guid.NewGuid().ToString();
 
-            AutoBox.Setup<ProductRepository>(x => x.GetAll()).Caches(TimeSpan.FromSeconds(10));
-            AutoBox.Setup<ProductRepository>(x => x.Create(product, 1)).Invalidates(x => x.GetAll());
+            Container.Setup<ProductRepository>(x => x.GetAll()).Caches(TimeSpan.FromSeconds(10));
+            Container.Setup<ProductRepository>(x => x.Create(product, 1)).Invalidates(x => x.GetAll());
 
             var repository = ServiceLocator.Current.GetInstance<ProductController>();
 

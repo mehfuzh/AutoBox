@@ -27,7 +27,7 @@ Lets take that you have a controller like this :
 
 *AccountService* is implemented in MyCoolWebSite.Services folder,  in the global.ascx you just need to type the following line:
 
-	AutoBox.Init();
+	Container.Init();
 
 Next you need to override the __GetControllerInstance__ from DefaultControllerFactory. Since AutoBox is implemented using __CommonServiceLocator__ you just need to have the following
 code block:
@@ -47,11 +47,11 @@ Now, moving forward there is a method in IProuductRepository lets say IProductRe
 
 You just dont want to hit database all the time, unless invalidated. Therefore, you can further specify:
 
-	AutoBox.Setup<ProductRepository>(x=> x.GetAllProducts()).Caches(TimeSpan.FromMinutes(10));
+	Container.Setup<ProductRepository>(x=> x.GetAllProducts()).Caches(TimeSpan.FromMinutes(10));
 
 Here you can extend it to the method that will invalidate it.
 
-	AutoBox.Setup<ProductRepository>(x=> x.Create(Arg.Varies<Product>()).Invalidates(x => x.GetAllProducts());
+	Container.Setup<ProductRepository>(x=> x.Create(Arg.Varies<Product>()).Invalidates(x => x.GetAllProducts());
 
 *Arg.Varies* speicifies  Any arguments. It can be also used for caching , this will act similar to varybyparams.
 

@@ -17,7 +17,7 @@ namespace AutoBox
     /// <summary>
     /// Entry-point for initalizing model depndencies and caching.
     /// </summary>
-    public static class AutoBox
+    public static class Container
     {
         /// <summary>
         /// Initalizes dependencies and caching handlers for current project.

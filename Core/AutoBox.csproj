@@ -75,7 +75,7 @@
     <Compile Include="Abstraction\ISpecific.cs" />
     <Compile Include="Argument.cs" />
     <Compile Include="Ast\ArgumentVisitor.cs" />
-    <Compile Include="AutoBox.cs" />
+    <Compile Include="Container.cs" />
     <Compile Include="Handlers\BaseMethodHandler.cs" />
     <Compile Include="Handlers\CacheMethodHandler.cs" />
     <Compile Include="Locator\AutoBoxServiceLocator.cs" />
