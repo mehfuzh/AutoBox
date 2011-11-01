@@ -25,7 +25,7 @@ When you have  controller like this :
 		this.service = service;
 	}
 
-Where AccountService is implemented in MyCoolWebSite.Services folder  in the global.ascx you just need to type the following line:
+*AccountService* is implemented in MyCoolWebSite.Services folder,  in the global.ascx you just need to type the following line:
 
 	AutoBox.Init();
 
@@ -58,7 +58,7 @@ Finally to make *Memcached* working you will need to have the following block in
 	</configuration>
 
 
-Here you notice that by default its pointing to *localhost* and *MemCacheProvider*. However it can be an external IP pointing to *Amazon Elastic Memcached*(released a few weeks ago). Howeever MemCached  is a service and the tool uses default memcache protocol so even if *windows azure* has surpports memcache , you will just need to specify the endpoint and you are good to go.
+Here you notice that by default its pointing to *localhost* and *MemCacheProvider*. However it can be an external IP pointing to __Amazon ElastiCache__(released a few weeks ago). Howeever MemCached  is a service and the tool uses default memcache protocol so even if *windows azure* has surpports memcache , you will just need to specify the endpoint and you are good to go.
 
 To test caching locally, you can use the  *CouchBase Memcached server*, it gives you a nice web based GUI to monitor the cache usage, configure memory and clusters.
 
@@ -77,12 +77,13 @@ Once your are set, you can run service_register.bat(from command like or just do
 Finally, you can double click the "Membase Console" from desktop and configure cluster, memory, etc.
 
 
-Moving forward, there is *AutoBox.Specification* project. You can use TestDriven.Net to see that all the tests pass and you have configured things correctly.
+Moving forward, there is __AutoBox.Specification__ project. You can use TestDriven.Net to see that all the tests pass and you have configured things correctly.
 
 This is an early preview , so i will add more features overtime based on feedback.
 
 
 Regards,
+
 Mehfuz
 
 
