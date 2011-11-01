@@ -15,13 +15,13 @@ namespace AutoBox.Specification
         [SetUp]
         public void BeforeEach()
         {
-            Box.Init();
+            Container.Init();
         }
 
         [Test]
         public void ShouldReturnCachedItemForSimilarArgWhenVariableIsSpecified()
         {
-            Box.Setup<ProductRepository>(x => x.Create(Arg.Varies<string>(), Arg.Varies<int>())).Caches(TimeSpan.FromSeconds(10));
+            Container.Setup<ProductRepository>(x => x.Create(Arg.Varies<string>(), Arg.Varies<int>())).Caches(TimeSpan.FromSeconds(10));
 
             const string product = "x";
 
@@ -35,7 +35,7 @@ namespace AutoBox.Specification
         [Test]
         public void ShoudlInvalidateForDifferentArgWhenVariableIsSpecified()
         {
-            Box.Setup<ProductRepository>(x => x.Create(Arg.Varies<string>(), Arg.Varies<int>())).Caches(TimeSpan.FromSeconds(10));
+            Container.Setup<ProductRepository>(x => x.Create(Arg.Varies<string>(), Arg.Varies<int>())).Caches(TimeSpan.FromSeconds(10));
 
             const string product = "x";
             const string invalidatingProduct = "y";
@@ -50,7 +50,7 @@ namespace AutoBox.Specification
         [Test]
         public void ShouldNotCacheWhenArgInInvoationDoesNotMatchSetup()
         {
-            Box.Setup<ProductRepository>(x => x.Create(Arg.Varies<string>(), 1)).Caches(TimeSpan.FromSeconds(10));
+            Container.Setup<ProductRepository>(x => x.Create(Arg.Varies<string>(), 1)).Caches(TimeSpan.FromSeconds(10));
 
             const string product = "x";
 

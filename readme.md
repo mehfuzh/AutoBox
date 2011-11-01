@@ -1,4 +1,4 @@
-# AutoBox - Auto initialize dependencies and do caching with ease.
+# AutoBox - Auto Dependency Injection and caching container
 ================================================================
 
 
@@ -85,8 +85,6 @@ This is an early preview , so i will add more features overtime based on feedbac
 Regards,
 
 Mehfuz
-
-
 
 
 

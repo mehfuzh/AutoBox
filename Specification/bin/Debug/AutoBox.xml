@@ -283,6 +283,11 @@
             Gets a value indicating the calling method is invalidated.
             </summary>
         </member>
+        <member name="P:AutoBox.Locator.AutoBoxServiceLocator.Container">
+            <summary>
+            Gets the container associated with this locator.
+            </summary>
+        </member>
         <member name="M:AutoBox.Abstraction.IHandler.Invoke(System.Object,AutoBox.Abstraction.IMethodInvocation)">
             <summary>
             Invokes the method defined for the current config.
@@ -329,31 +334,6 @@
         <member name="P:AutoBox.MethodInvocation.Arguments">
             <summary>
             Gets the invoked arguments.
-            </summary>
-        </member>
-        <member name="T:AutoBox.Box">
-            <summary>
-            Entry-point for initalizing model depndencies and caching.
-            </summary>
-        </member>
-        <member name="M:AutoBox.Box.Init">
-            <summary>
-            Initalizes dependencies and caching handlers for current project.
-            </summary>
-        </member>
-        <member name="M:AutoBox.Box.Init(AutoBox.Resolver.Abstraction.IResolver)">
-            <summary>
-            Initalizes dependencies and caching handlers for specific assembly.
-            </summary>
-        </member>
-        <member name="M:AutoBox.Box.Setup``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
-            <summary>
-            Defines specific config for a particular member.
-            </summary>
-        </member>
-        <member name="M:AutoBox.Box.Setup``1(System.Linq.Expressions.Expression{System.Action{``0}})">
-            <summary>
-            Defines specific config for a particular member.
             </summary>
         </member>
         <member name="M:AutoBox.Argument.Validate(System.Object)">
@@ -460,9 +440,29 @@
             Gets or sets the cache provider.
             </summary>
         </member>
-        <member name="P:AutoBox.Locator.AutoBoxServiceLocator.Container">
+        <member name="T:AutoBox.Container">
             <summary>
-            Gets the container associated with this locator.
+            Entry-point for initalizing model depndencies and caching.
+            </summary>
+        </member>
+        <member name="M:AutoBox.Container.Init">
+            <summary>
+            Initalizes dependencies and caching handlers for current project.
+            </summary>
+        </member>
+        <member name="M:AutoBox.Container.Init(AutoBox.Resolver.Abstraction.IResolver)">
+            <summary>
+            Initalizes dependencies and caching handlers for specific assembly.
+            </summary>
+        </member>
+        <member name="M:AutoBox.Container.Setup``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Defines specific config for a particular member.
+            </summary>
+        </member>
+        <member name="M:AutoBox.Container.Setup``1(System.Linq.Expressions.Expression{System.Action{``0}})">
+            <summary>
+            Defines specific config for a particular member.
             </summary>
         </member>
     </members>

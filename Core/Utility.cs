@@ -15,7 +15,7 @@ namespace AutoBox
         /// </summary>
         public static string GetUniqueKey(this CacheMethodHandler handler)
         {
-            return string.Format("{0}_{1}", typeof(Box).Namespace, CalculateMD5Hash(handler.GetHashCode().ToString(CultureInfo.CurrentCulture)));
+            return string.Format("{0}_{1}", typeof(Container).Namespace, CalculateMD5Hash(handler.GetHashCode().ToString(CultureInfo.CurrentCulture)));
         }
 
         public static string CalculateMD5Hash(this string input)

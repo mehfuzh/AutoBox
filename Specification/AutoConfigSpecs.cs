@@ -15,7 +15,7 @@ namespace AutoBox.Specification
         [SetUp]
         public void BeforeEach()
         {
-            Box.Init();
+            Container.Init();
         }
    
         [Test]
@@ -24,7 +24,7 @@ namespace AutoBox.Specification
             string product = Guid.NewGuid().ToString();
             int quantity = new Random().Next(1, 100);
 
-            Box.Setup<ProductRepository>(x => x.Create(product, quantity)).Caches(TimeSpan.FromMinutes(1));
+            Container.Setup<ProductRepository>(x => x.Create(product, quantity)).Caches(TimeSpan.FromMinutes(1));
 
             var result = ServiceLocator.Current.GetInstance<ProductController>();
 

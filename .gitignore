@@ -1,0 +1,4 @@
+# ingore any bin or obj directly
+
+bin/
+obj/
