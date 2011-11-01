@@ -20,8 +20,8 @@ namespace AutoBox.Specification
         [SetUp]
         public void BeforeEach()
         {
-            Container.Init();
-            Container.Setup<ProductRepository>(x => x.Create(title, quantity)).Caches(TimeSpan.FromSeconds(2));
+            AutoBox.Init();
+            AutoBox.Setup<ProductRepository>(x => x.Create(title, quantity)).Caches(TimeSpan.FromSeconds(2));
         }
    
         [Test]

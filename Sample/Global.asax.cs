@@ -37,11 +37,11 @@ namespace AutoBox.Sample
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            Container.Init();
+            AutoBox.Init();
 
             // setup.
-            Container.Setup<TestRepository>(x => x.GetTimeStamp()).Caches(TimeSpan.FromMinutes(1));
-            Container.Setup<TestRepository>(x => x.UpdateTimeStamp()).Invalidates(x => x.GetTimeStamp());
+            AutoBox.Setup<TestRepository>(x => x.GetTimeStamp()).Caches(TimeSpan.FromMinutes(1));
+            AutoBox.Setup<TestRepository>(x => x.UpdateTimeStamp()).Invalidates(x => x.GetTimeStamp());
 
             ControllerBuilder.Current.SetControllerFactory(new CustomControllerFactory());
         }

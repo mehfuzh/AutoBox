@@ -17,7 +17,7 @@ you find more information on this at : http://www.memcached.org/
 
 ## Getting Started
 
-When you have  controller like this :
+Lets take that you have a controller like this :
 
 
 	public AccountCOntroller(IAccountService service)

@@ -16,7 +16,7 @@ namespace AutoBox.Locator
         /// <summary>
         /// Gets the container associated with this locator.
         /// </summary>
-        public TypeContainer Container
+        public TypeContainer AutBox
         {
             get
             {

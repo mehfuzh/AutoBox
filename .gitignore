@@ -2,3 +2,7 @@
 
 bin/
 obj/
+
+# ignore the solution file.
+
+*.suo
