@@ -1,5 +1,5 @@
-# AutoBox - Auto Dependency Injection and caching container
-================================================================
+# AutoBox - On the fly Dependency Injection and caching container
+==================================================================
 
 
 The tool dynamically injects dependencies based on convention (IAccountService to AccountService). Also, let you cache  repository calls to memcached (the most poular cross-plaform caching system). 
