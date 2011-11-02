@@ -1,4 +1,4 @@
-# ingore any bin or obj directly
+# ignore bin, obj directories
 
 bin/
 obj/

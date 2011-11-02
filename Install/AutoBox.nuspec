@@ -4,11 +4,14 @@
     <id>AutoBox</id>
     <version>0.9</version>
     <authors>Mehfuz Hossain</authors>
-    <description>Auto configure model dependencies and cache data calls without ever touching the code.</description>
+    <summary>Auto Dependency Injection and caching container</summary>
+    <description>
+      The tool dynamically injects dependencies based on convention (IAccountService to AccountService). Also, let you cache repository calls to memcached (the most poular cross-plaform caching system).
+    </description>
     <language>en-US</language>
-    <projectUrl>http://mehfuzh.github.com/AutoBox/</projectUrl>
+    <projectUrl>https://github.com/mehfuzh/AutoBox/</projectUrl>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
-    <tags>MVC, Caching, Scaffold, Configuration</tags>
+    <tags>caching configuration  memcache asp.net mvc</tags>
 
     <dependencies>
 
