@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  	<title>AutoBox - On the fly Dependency Injection and caching container</title>
+  	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" title="Idea" href="highlight/styles/idea.css">
+</head>
+ 
+<script src="highlight/highlight.pack.js"></script>
+ 
+<body>
+   
+  <a href="https://github.com/mehfuzh/AutoBox"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://assets1.github.com/img/7afbc8b248c68eb468279e8c17986ad46549fb71?repo=&url=http%3A%2F%2Fs3.amazonaws.com%2Fgithub%2Fribbons%2Fforkme_right_darkblue_121621.png&path=" alt="Fork me on GitHub"></a>
+  
+    <section class="mustHead">
+        <title>AutoBox - On the fly Dependency Injection and caching container</title> 
+	    <img src="images/autoBoxLogo.jpg" alt="AutoBox">
+    	<br/>
+    </section>
+    
+    <section class="headerText">
+		{{content}}
+	</section>
+
+	
+	<section class="links">
+		{{ site.posts[1].content }}
+	</section>
+
+	<section class="content">
+
+	<p>
+			<img src="images/nuget.jpg" alt="Nuget installation">
+	</p>
+	
+	{% for post in site.posts limit:1 %}
+
+		<h3>{{ post.title }}</h3>
+
+	{{ post.content }}
+
+	<p class="smallText">Copyright 2011</p>
+
+	{% endfor %}
+
+	</section>
+
+</body>
+
+<script type="text/javascript">
+hljs.tabReplace = '    '; // 4 spaces
+hljs.initHighlightingOnLoad();
+</script>
+
+</html>
