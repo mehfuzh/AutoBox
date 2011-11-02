@@ -7,6 +7,6 @@ Free & open source, high-performance, distributed memory object caching system, 
 
 Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.
 
-you will find more information on this at : [http://www.memcached.org/]
+you will find more information on this at : [http://www.memcached.org/](http://www.memcached.org/)
 
 

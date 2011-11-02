@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   	<title>AutoBox - On the fly Dependency Injection and caching container</title>
   	<link rel="stylesheet" href="style.css" type="text/css" />
-	<link rel="stylesheet" title="Idea" href="highlight/styles/idea.css">
+	<link rel="stylesheet" title="Zenburn" href="highlight/styles/zenburn.css">
 </head>
  
 <script src="highlight/highlight.pack.js"></script>
@@ -16,7 +16,6 @@
     <section class="mustHead">
         <title>AutoBox - On the fly Dependency Injection and caching container</title> 
 	    <img src="images/autoBoxLogo.jpg" alt="AutoBox">
-    	<br/>
     </section>
     
     <section class="headerText">
@@ -25,25 +24,24 @@
 
 	
 	<section class="links">
-		{{ site.posts[1].content }}
+	
 	</section>
 
 	<section class="content">
 
-	<p>
-			<img src="images/nuget.jpg" alt="Nuget installation">
-	</p>
+	<img src="images/nuget.jpg" alt="Nuget installation">
 	
-	{% for post in site.posts limit:1 %}
+	{% for post in site.posts %}
 
 		<h3>{{ post.title }}</h3>
 
 	{{ post.content }}
 
-	<p class="smallText">Lincensed under MIT opensource</p>
 
 	{% endfor %}
 
+	<p class="smallText">Lincensed under MIT opensource</p>
+	
 	</section>
 
 </body>
