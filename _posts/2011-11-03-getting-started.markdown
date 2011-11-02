@@ -9,7 +9,7 @@ Free & open source, high-performance, distributed memory object caching system, 
 
 Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.
 
-you will find more information on this at : http://www.memcached.org/
+you will find more information on this at : [http://www.memcached.org/]
 
 
 ## Getting Started
@@ -27,6 +27,7 @@ Lets take that you have a controller and the constructor looks like this :
 	Container.Init();
 
 
+Now here to mention that AutoBox is a convention based tool, it means IAccountService will search for AccountService class that implements it.
 
 Next you need to override the __GetControllerInstance__ from DefaultControllerFactory. Since AutoBox is implemented using __CommonServiceLocator__ you can directly include _ServiceLocator.Current.GetInstance_ that will return the target controller with depencies properly injected.
 
@@ -74,7 +75,7 @@ To test caching locally, you can use the  _CouchBase Membase server_ (Not limite
 
 You can download it from this link:
 
-http://www.couchbase.com/products-and-services/memcached
+[http://www.couchbase.com/products-and-services/memcached]
 
 While under a router , i faced an issue in getting an IP, by default it useses IP_Addr.bat from %Program_Files%\Membase\Server\bin
 
@@ -91,10 +92,6 @@ Moving forward, there is a __AutoBox.Specification__ project. You can use *TestD
 
 This is an early preview, therefore there might be glitches and feel free to file them and raise questions.
 
-
-Regards,
-
-Mehfuz
 
 
 
