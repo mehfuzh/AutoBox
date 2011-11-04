@@ -72,7 +72,10 @@ namespace AutoBox.Handlers
             int hashCode = this.key.GetHashCode();
             for (int index = 0; index < arguments.Length; index++)
             {
-                hashCode += arguments[index].GetHashCode();
+                if (arguments[index] != null)
+                {
+                    hashCode += arguments[index].GetHashCode();
+                }
             }
 
             return hashCode;

@@ -84,6 +84,11 @@ namespace AutoBox.Containers
 
                 IEnumerable<Type> resolvedTypes = assembly.GetTypes().Where(x => x.Name == targetName);
 
+                if (resolvedTypes.Count() == 0)
+                {
+                    throw new AutoBoxException(string.Format(Messages.FailedToResolveCorrespondingType, interfaceType.Name));
+                }
+
                 foreach (var resolvedType in resolvedTypes)
                 {
                     if (resolvedType != null && interfaceType.IsAssignableFrom(resolvedType))

@@ -120,6 +120,9 @@
   <data name="CantResolveAutoConfigItself" xml:space="preserve">
     <value>Can't resolve type from autoconfig itself.</value>
   </data>
+  <data name="FailedToResolveCorrespondingType" xml:space="preserve">
+    <value>Failed to resolve the corresponding type for {0}</value>
+  </data>
   <data name="NoSuitableCtorToResolve" xml:space="preserve">
     <value>No suitable constructor found for {0} to resolve</value>
   </data>

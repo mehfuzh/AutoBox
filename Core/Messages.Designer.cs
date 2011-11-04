@@ -70,6 +70,15 @@ namespace AutoBox {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to resolve the corresponding type for {0}.
+        /// </summary>
+        internal static string FailedToResolveCorrespondingType {
+            get {
+                return ResourceManager.GetString("FailedToResolveCorrespondingType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No suitable constructor found for {0} to resolve.
         /// </summary>
         internal static string NoSuitableCtorToResolve {

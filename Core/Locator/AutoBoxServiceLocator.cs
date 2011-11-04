@@ -26,7 +26,7 @@ namespace AutoBox.Locator
 
         protected override IEnumerable<object> DoGetAllInstances(Type serviceType)
         {
-            throw new AutoConfigException("Iteration of all instances is not supported by AutoConfig");
+            throw new AutoBoxException("Iteration of all instances is not supported by AutoConfig");
         }
 
         protected override object DoGetInstance(Type serviceType, string key)

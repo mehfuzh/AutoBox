@@ -66,7 +66,7 @@
     <Compile Include="Abstraction\IHandler.cs" />
     <Compile Include="Arg.cs" />
     <Compile Include="Attributes\VariableAttribute.cs" />
-    <Compile Include="AutoConfigException.cs" />
+    <Compile Include="AutoBoxException.cs" />
     <Compile Include="AutoBoxSection.cs" />
     <Compile Include="Factories\CacheProviderFactory.cs" />
     <Compile Include="GlobalSuppressions.cs" />
