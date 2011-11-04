@@ -10,4 +10,5 @@ This happens due to the conflict between NewtonSoft.dll and Intellitrace.Try to 
 + Tools -> Options -> Intellitrace -> Modules
 + Add -> NewtonSoft
 
+However, you can also turn off the intellitrace to avoid this.
 
