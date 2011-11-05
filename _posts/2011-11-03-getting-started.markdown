@@ -11,12 +11,12 @@ Lets take that you have a controller and the constructor looks like this :
 		this.service = service;
 	}
 
-*AccountService* is implemented in MyCoolWebSite.Services folder,  in the global.ascx you first need to add the following line:
+*AccountService* is implemented in MyCoolWebSite.Services folder, in global.ascx you first need to add the following line:
 
 	Container.Init();
 
 
-Now here to mention that AutoBox is a convention based tool, it means IAccountService will search for AccountService class that implements it.
+Here to mention that AutoBox is a convention based tool, it means IAccountService will search for AccountService class that implements it.
 
 Next you need to override the __GetControllerInstance__ from DefaultControllerFactory. Since AutoBox is implemented using __CommonServiceLocator__ you can directly include _ServiceLocator.Current.GetInstance_ that will return the target controller with depencies properly injected.
 
@@ -37,7 +37,7 @@ You just dont want to hit database all the time, unless invalidated. Therefore, 
 
 	Container.Setup<ProductRepository>(x=> x.GetAllProducts()).Caches(TimeSpan.FromMinutes(10));
 
-This lets AutoBox to store the data to memcache that will automatically invalidate after 10 minutes. However you can explictly specify the method that will invalidate it.
+This tells AutoBox to cache the result of the call that will automatically invalidate after 10 minutes. However you can explictly specify the method that will invalidate it.
 
 	Container.Setup<ProductRepository>(x=> x.Create(Arg.Varies<Product>()).Invalidates(x => x.GetAllProducts());
 
