@@ -15,6 +15,10 @@ Lets take that you have a controller and the constructor looks like this :
 
 	Container.Init();
 
+However it is possible to specify assembly explictly. For example:
+	Container.Init(Resolve.FromCurrentAssembly);
+Similarly, you can do:
+	Container.Init(Resolve.From(<You assembly>));
 
 Here to mention that AutoBox is a convention based tool, it means IAccountService will search for AccountService class that implements it.
 
