@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using AutoBox.Specification.Abstraction;
+using AutoBox.Specification.Repositories.Abstraction;
+using AutoBox.Specification.Services.Abstraction;
 
 namespace AutoBox.Specification.Controllers
 {
     public class ProductController
     {
         private readonly IProductRepository repository;
-        private readonly IAccountController accountRepo;
+        private readonly IAccountService accountRepo;
 
-        public ProductController(IProductRepository repository , IAccountController accountRepo)
+        public ProductController(IProductRepository repository , IAccountService accountRepo)
         {
             this.repository = repository;
             this.accountRepo = accountRepo;

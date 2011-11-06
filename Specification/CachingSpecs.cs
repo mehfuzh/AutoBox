@@ -5,7 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using Should;
 using System.Threading;
-using AutoBox.Specification.Repository;
+using AutoBox.Specification.Repositories;
 using AutoBox.Specification.Controllers;
 using Microsoft.Practices.ServiceLocation;
 
@@ -50,7 +50,7 @@ namespace AutoBox.Specification
         }
 
         [TearDown]
-        public void RemoveAllData()
+        public void AfterEach()
         {
             Store.Clear();
         }

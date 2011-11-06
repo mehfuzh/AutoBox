@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>AutoBox</id>
-    <version>0.9</version>
+    <version>1.0.1</version>
     <authors>Mehfuz Hossain</authors>
-    <summary>Auto Dependency Injection and caching container</summary>
+    <summary>On the fly dependency Injection and caching container</summary>
     <description>
-      The tool dynamically injects dependencies based on convention (IAccountService to AccountService). Also, let you cache repository calls to memcached (the most poular cross-plaform caching system).
+      The tool dynamically injects dependencies based on convention. Also, let you cache repository calls to memcached (the most poular cross-plaform caching system).
     </description>
     <language>en-US</language>
-    <projectUrl>https://github.com/mehfuzh/AutoBox/</projectUrl>
+    <projectUrl>http://mehfuzh.github.com/AutoBox/</projectUrl>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
     <tags>caching configuration  memcache asp.net mvc</tags>
 

@@ -24,5 +24,14 @@ namespace AutoBox
                 return new AssemblyResolver(Assembly.GetCallingAssembly());
             }
         }
+
+        /// <summary>
+        /// Resolves from the target assembly.
+        /// </summary>
+        /// <param name="assembly">Target assenbly</param>
+        public static IResolver From(Assembly assembly)
+        {
+            return new AssemblyResolver(assembly);
+        }
     }
 }

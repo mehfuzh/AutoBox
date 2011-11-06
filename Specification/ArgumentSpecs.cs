@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
 using Should;
-using AutoBox.Specification.Repository;
+using AutoBox.Specification.Repositories;
 using AutoBox.Specification.Controllers;
 using Microsoft.Practices.ServiceLocation;
 
@@ -62,7 +62,7 @@ namespace AutoBox.Specification
         }
 
         [TearDown]
-        public void RemoveAllData()
+        public void AfterEach()
         {
             Store.Clear();
         }

@@ -2,17 +2,7 @@
 ==================================================================
 
 
-The tool dynamically injects dependencies based on convention (IAccountService to AccountService). Also, let you cache  repository calls to memcached (the most poular cross-plaform caching system). 
-
-
-
-## What is Memcached?
-
-Free & open source, high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.
-
-Memcached is an in-memory key-value store for small chunks of arbitrary data (strings, objects) from results of database calls, API calls, or page rendering.
-
-you will find more information on this at : http://www.memcached.org/
+The tool dynamically injects dependencies based on convention. Also, let youcache  repository calls using memcached(the most popular cross-platform caching system). 
 
 
 ## Getting Started

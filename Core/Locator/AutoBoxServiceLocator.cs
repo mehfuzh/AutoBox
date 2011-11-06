@@ -34,6 +34,16 @@ namespace AutoBox.Locator
             return container.Resolve(serviceType);
         }
 
+
+        protected override string FormatActivationExceptionMessage(Exception actualException, Type serviceType, string key)
+        {
+            if (actualException is AutoBoxException)
+            {
+                return actualException.Message;
+            }
+            return base.FormatActivationExceptionMessage(actualException, serviceType, key);
+        }
+
         private readonly TypeContainer container;
     }
 }

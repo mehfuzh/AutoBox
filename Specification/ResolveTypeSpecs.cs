@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using NUnit.Framework;
 using Should;
-using AutoBox.Specification.Abstraction;
 using AutoBox.Specification.Controllers;
 using Microsoft.Practices.ServiceLocation;
+using AutoBox.Specification.Repositories.Abstraction;
 
 namespace AutoBox.Specification
 {
     [TestFixture]
-    public class BootstrappingSpecs
+    public class ResolveTypeSpecs
     {
         [SetUp]
         public void BeforeEach()
@@ -41,7 +40,7 @@ namespace AutoBox.Specification
         }
 
         [TearDown]
-        public void RemoveAllData()
+        public void AfterEach()
         {
             Store.Clear();
         }

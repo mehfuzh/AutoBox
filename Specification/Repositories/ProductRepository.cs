@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using AutoBox.Specification.Abstraction;
+using AutoBox.Specification.Repositories.Abstraction;
 
-namespace AutoBox.Specification.Repository
+namespace AutoBox.Specification.Repositories
 {
     public class ProductRepository : IProductRepository
     {

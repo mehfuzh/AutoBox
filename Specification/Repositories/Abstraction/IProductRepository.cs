@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using AutoBox;
 
-namespace AutoBox.Specification.Abstraction
+namespace AutoBox.Specification.Repositories.Abstraction
 {
     public interface IProductRepository
     {

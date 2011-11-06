@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AutoBox.Specification.Abstraction
+namespace AutoBox.Specification.Services.Abstraction
 {
-    public interface IAccountController
+    public interface IAccountService
     {
     }
 }
