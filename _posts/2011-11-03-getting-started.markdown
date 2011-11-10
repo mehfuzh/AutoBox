@@ -6,7 +6,7 @@ title : Gettting Started
 Lets take that you have a controller and the constructor looks like this :
 
 
-	public AccountCOntroller(IAccountService service)
+	public AccountController(IAccountService service)
 	{
 		this.service = service;
 	}
@@ -73,16 +73,8 @@ You can download it from this link:
 
 [http://www.couchbase.com/products-and-services/memcached/](http://www.couchbase.com/products-and-services/memcached/)
 
-While under a router , i faced an issue in getting an IP, by default it useses IP_Addr.bat from %Program_Files%\Membase\Server\bin
 
-But rather depending on it to resolve your IP which in my case my didnt work since my ip is dynamically assigned by router, you can update the follwoing line in *service_register.bat*:
-
-	Set IP_ADDR=127.0.0.1
-
-Once you are done, you can run service_register.bat(from command line or just double click it) that will initalize and register the membase server as a local service.
-
-Finally, you can double-click the "Membase Console" from desktop which will take you through an easy wizard.
-
+Once installed, you can double-click the "Membase Console" from desktop which will take you through an easy wizard to configure memcached.
 
 Moving forward, there is a __AutoBox.Specification__ project. You can use *TestDriven.Net* to verify that all the tests pass and you have configured things correctly.
 
