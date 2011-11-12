@@ -13,3 +13,8 @@ C:\Projects\OpenSource\AutoBox\Libraries\BeIT.MemCached\bin\Debug\BeIT.MemCached
 C:\Projects\OpenSource\AutoBox\Libraries\BeIT.MemCached\obj\Debug\ResolveAssemblyReference.cache
 C:\Projects\OpenSource\AutoBox\Libraries\BeIT.MemCached\obj\Debug\BeIT.MemCached.dll
 C:\Projects\OpenSource\AutoBox\Libraries\BeIT.MemCached\obj\Debug\BeIT.MemCached.pdb
+C:\Source\AutoBox\Libraries\BeIT.MemCached\bin\Debug\BeIT.MemCached.dll
+C:\Source\AutoBox\Libraries\BeIT.MemCached\bin\Debug\BeIT.MemCached.pdb
+C:\Source\AutoBox\Libraries\BeIT.MemCached\obj\Debug\ResolveAssemblyReference.cache
+C:\Source\AutoBox\Libraries\BeIT.MemCached\obj\Debug\BeIT.MemCached.dll
+C:\Source\AutoBox\Libraries\BeIT.MemCached\obj\Debug\BeIT.MemCached.pdb

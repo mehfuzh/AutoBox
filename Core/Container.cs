@@ -15,7 +15,7 @@ using AutoBox.Containers;
 namespace AutoBox
 {
     /// <summary>
-    /// Entry-point for initalizing model depndencies and caching.
+    /// Entry-point for initailizing model depndencies and caching.
     /// </summary>
     public static class Container
     {
@@ -28,7 +28,7 @@ namespace AutoBox
         }
 
         /// <summary>
-        /// Initalizes dependencies and caching handlers for specific assembly.
+        /// Initailizes dependencies and caching handlers for an assembly.
         /// </summary>
         public static void Init(IResolver resolver)
         {

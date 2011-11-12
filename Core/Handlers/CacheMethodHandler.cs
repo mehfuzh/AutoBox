@@ -6,7 +6,6 @@ using System.IO;
 using System.Text;
 using Newtonsoft.Json;
 using AutoBox.Factories;
-using System.Security.Cryptography;
 
 namespace AutoBox.Handlers
 {
@@ -20,6 +19,8 @@ namespace AutoBox.Handlers
         /// </summary>
         /// <param name="key">Target key for which the object will be stored.</param>
         /// <param name="cacheDuration">Target cache duration</param>
+        /// <param name="invalidated">Defines if the cache should be invalidated</param>
+        /// <param name="arguments">Target arguments</param>
         public CacheMethodHandler(string key, TimeSpan cacheDuration, bool invalidated,  object[] arguments)
         {
             this.key = key;
@@ -28,6 +29,11 @@ namespace AutoBox.Handlers
             this.arguments = arguments;
         }
 
+        /// <summary>
+        /// Returns the cached object. When new it the first stores then returns the cached item.
+        /// </summary>
+        /// <param name="target">Target object</param>
+        /// <param name="invocation">Target invocation</param>
         public object Invoke(object target, IMethodInvocation invocation)
         {
             var provider = CacheProviderFactory.Create();
@@ -67,6 +73,9 @@ namespace AutoBox.Handlers
             return result;
         }
 
+        /// <summary>
+        /// Returns hashcode for the current instance.
+        /// </summary>
         public override int GetHashCode()
         {
             int hashCode = this.key.GetHashCode();

@@ -9,7 +9,7 @@ namespace AutoBox
     internal class MethodHash
     {
         /// <summary>
-        /// Initializes the new instance of <see cref="MethodInfoKey"/> class.
+        /// Initializes the new instance of <see cref="MethodHash"/> class.
         /// </summary>
         /// <param name="methodInfo">Target <see cref="MethodInfo"/> instance</param>
         internal MethodHash(MethodInfo methodInfo)

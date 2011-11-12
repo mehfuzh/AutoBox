@@ -4,10 +4,12 @@ using System.Linq;
 using AutoBox.Abstraction;
 using Microsoft.Practices.ServiceLocation;
 using AutoBox.Ast;
+using AutoBox.Attributes;
 
 namespace AutoBox
 {
-    public sealed class Configuration : IConfiguration , ISpecific
+    [NoIntercept]
+    public sealed class Configuration : IConfiguration
     {
         /// <summary>
         /// Initializes the new instance of <see cref="Configuration"/> class.

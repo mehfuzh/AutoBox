@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AutoBox.Abstraction
 {
-    public interface IHandler
+    internal interface IHandler
     {
         /// <summary>
         /// Invokes the method defined for the current config.

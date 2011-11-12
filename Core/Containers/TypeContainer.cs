@@ -4,15 +4,23 @@ using System.Linq;
 using System.Reflection;
 using AutoBox.Abstraction;
 using AutoBox.Interceptors;
+using AutoBox.Attributes;
 
 namespace AutoBox.Containers
 {
+    /// <summary>
+    /// Register and maps the target type.
+    /// </summary>
     public class TypeContainer
     {
+        /// <summary>
+        /// Initialize the instance of <see cref="TypeContainer"/> class.
+        /// </summary>
         public TypeContainer(Assembly assembly)
         {
             this.assembly = assembly;
-            this.id = Guid.NewGuid().ToString();
+            
+            id = Guid.NewGuid().ToString();
             mappings = new Dictionary<Type, Type>();
             instances = new Dictionary<Type, object>();
         }
@@ -59,7 +67,7 @@ namespace AutoBox.Containers
 
                 if (!instances.ContainsKey(targetType))
                 {
-                    if (!typeof(ISpecific).IsAssignableFrom(mappings[targetType]))
+                    if (mappings[targetType].GetCustomAttributes(typeof(NoInterceptAttribute), false).Length ==0)
                         instance = new ProxyGenerator(new MethodInterceptor(mappings[targetType])).Create(targetType);
                     else
                         instance = Activator.CreateInstance(mappings[targetType]);

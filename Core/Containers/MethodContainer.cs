@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AutoBox.Abstraction;
+using AutoBox.Attributes;
 
 namespace AutoBox.Containers
 {
-    public sealed class MethodContainer : IMethodContainer , ISpecific
+    /// <summary>
+    /// Defines method metadata.
+    /// </summary>
+    [NoIntercept]
+    public sealed class MethodContainer : IMethodContainer
     {
+        /// <summary>
+        /// Initialize the instance of <see cref="MethodContainer"/> class.
+        /// </summary>
         public MethodContainer()
         {
             methods = new Dictionary<MethodHash, IList<IMethodMetaData>>();
