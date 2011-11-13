@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AutoBox.Abstraction
 {
-    public interface IInterceptorSettings
+    internal interface IInterceptorSettings
     {
         /// <summary>
         /// Creates the proxy for the target type.

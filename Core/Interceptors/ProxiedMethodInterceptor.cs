@@ -7,10 +7,8 @@ using AutoBox.Abstraction;
 
 namespace AutoBox.Interceptors
 {
-    public class ProxiedMethodInterceptor : IInterceptor
+    internal class ProxiedMethodInterceptor : IInterceptor
     {
-        private readonly IMethodInterceptor interceptor;
-
         public ProxiedMethodInterceptor(IMethodInterceptor interceptor)
         {
             this.interceptor = interceptor;
@@ -22,5 +20,7 @@ namespace AutoBox.Interceptors
             interceptor.Intercept(methodInvocation);
             invocation.ReturnValue = methodInvocation.ReturnValue;
         }
+
+        private readonly IMethodInterceptor interceptor;
     }
 }

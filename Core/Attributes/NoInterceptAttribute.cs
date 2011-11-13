@@ -9,7 +9,7 @@ namespace AutoBox.Attributes
     /// Specifies that the type should not be intercepted.
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    internal class NoInterceptAttribute : System.Attribute
+    internal sealed class NoInterceptAttribute : System.Attribute
     {
     }
 }

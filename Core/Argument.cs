@@ -6,9 +6,12 @@ using AutoBox.Ast;
 
 namespace AutoBox
 {
+    /// <summary>
+    /// Wraps a specific argument.
+    /// </summary>
     public class Argument
     {
-        public Argument(Expression expression)
+        internal Argument(Expression expression)
         {
             this.id = Guid.NewGuid();
             this.expression = expression;

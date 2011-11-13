@@ -47,16 +47,26 @@ namespace AutoBox.Containers
             }
         }
 
+        /// <summary>
+        /// Registers an interface to its corresponding type.
+        /// </summary>
         public void Register(Type @interface, Type targetType)
         {
             mappings.Add(@interface, targetType);
         }
 
+        /// <summary>
+        /// Registers an interface to its corresponding type.
+        /// </summary>
+        /// <typeparam name="T">Target type</typeparam>
         public T Resolve<T>()
         {
             return (T)Resolve(typeof(T));
         }
 
+        /// <summary>
+        /// Resolve the target type with necessary dependencies.
+        /// </summary>
         public object Resolve(Type targetType)
         {
             RegisterInterfaceWhenNecessary(targetType);

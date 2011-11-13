@@ -20,7 +20,7 @@ namespace AutoBox
 
             var methodConfig = ServiceLocator.Current.GetInstance<IMethodContainer>();
 
-            IMethodMetaData metaData = methodConfig.GetMethodMetaData(methodInfo, arguments);
+            IMethod metaData = methodConfig.Get(methodInfo, arguments);
 
             var configItem = configuration.GetConfigItem(metaData);
 
@@ -30,7 +30,7 @@ namespace AutoBox
             {
                 if (configItem.CacheDuration.TotalMilliseconds > 0)
                 {
-                    string containerId =  (ServiceLocator.Current as Locator.AutoBoxServiceLocator).AutBox.Id;
+                    string containerId =  (ServiceLocator.Current as Locator.AutoBoxServiceLocator).TypeContainer.Id;
                     string compositeKey = string.Format("{0}+{1}", metaData.Key, containerId);
 
                     handler =   new CacheMethodHandler(compositeKey, configItem.CacheDuration, configItem.InValidated, arguments);

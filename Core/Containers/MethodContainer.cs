@@ -18,15 +18,18 @@ namespace AutoBox.Containers
         /// </summary>
         public MethodContainer()
         {
-            methods = new Dictionary<MethodHash, IList<IMethodMetaData>>();
+            methods = new Dictionary<MethodHash, IList<IMethod>>();
         }
 
-        public IMethodMetaData CreateMethodMetaData(System.Reflection.MethodInfo methodInfo, Argument[] arguments)
+        /// <summary>
+        /// Extends the specific method for a particular array of arguments to be used with the container.
+        /// </summary>
+        public IMethod Create(System.Reflection.MethodInfo methodInfo, Argument[] arguments)
         {
             var methodHash = new MethodHash(methodInfo);
 
             if (!methods.ContainsKey(methodHash))
-                methods.Add(methodHash, new List<IMethodMetaData>());
+                methods.Add(methodHash, new List<IMethod>());
 
             var methodMetaData = new MethodMetaData(methodHash, arguments);
 
@@ -35,7 +38,10 @@ namespace AutoBox.Containers
             return methodMetaData;
         }
 
-        public IMethodMetaData GetMethodMetaData(System.Reflection.MethodInfo methodInfo, object[] arguments)
+        /// <summary>
+        /// Gets the extended container method.
+        /// </summary>
+        public IMethod Get(System.Reflection.MethodInfo methodInfo, object[] arguments)
         {
             var methodHash = new MethodHash(methodInfo);
 
@@ -50,7 +56,7 @@ namespace AutoBox.Containers
             return null;
         }
 
-        private readonly IDictionary<MethodHash, IList<IMethodMetaData>> methods;
+        private readonly IDictionary<MethodHash, IList<IMethod>> methods;
 
     }
 }

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace AutoBox.Abstraction
 {
-    public interface IMethodContainer
+    internal interface IMethodContainer
     {
-        IMethodMetaData CreateMethodMetaData(System.Reflection.MethodInfo methodInfo, Argument[] arguments);
-        IMethodMetaData GetMethodMetaData(System.Reflection.MethodInfo methodInfo, object[] arguments);
+        IMethod Create(System.Reflection.MethodInfo methodInfo, Argument[] arguments);
+        IMethod Get(System.Reflection.MethodInfo methodInfo, object[] arguments);
     }
 }

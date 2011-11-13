@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace AutoBox
 {
-    internal class MethodMetaData : Abstraction.IMethodMetaData
+    internal class MethodMetaData : Abstraction.IMethod
     {
         /// <summary>
         /// Initializes the new instance of <see cref="MethodMetaData"/> class.

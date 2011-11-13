@@ -6,6 +6,9 @@ using System.Runtime.Serialization;
 
 namespace AutoBox
 {
+    /// <summary>
+    /// Represents specific errors related to the container. 
+    /// </summary>
     [Serializable]
     public class AutoBoxException : Exception
     {

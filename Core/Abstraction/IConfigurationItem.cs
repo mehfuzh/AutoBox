@@ -5,6 +5,10 @@ using System.Text;
 
 namespace AutoBox.Abstraction
 {
+    /// <summary>
+    /// Defines various configuraiton settings.
+    /// </summary>
+    /// <typeparam name="T">Target type</typeparam>
     public interface IConfigurationItem<T>
     {
         /// <summary>

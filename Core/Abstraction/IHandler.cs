@@ -8,7 +8,7 @@ namespace AutoBox.Abstraction
     internal interface IHandler
     {
         /// <summary>
-        /// Invokes the method defined for the current config.
+        /// Invokes the method defined in the current container using specific settings.
         /// </summary>
         object Invoke(object target, IMethodInvocation invocation);
     }

@@ -8,6 +8,9 @@ using AutoBox.Attributes;
 
 namespace AutoBox
 {
+    /// <summary>
+    /// Entry-point for defining settings for a resolved member.
+    /// </summary>
     [NoIntercept]
     public sealed class Configuration : IConfiguration
     {
@@ -24,13 +27,16 @@ namespace AutoBox
         /// </summary>
         /// <param name="methodMetaData">Defines the method metadata</param>
         /// <returns></returns>
-        internal IConfigurationItemImpl GetConfigItem(IMethodMetaData methodMetaData)
+        internal IConfigurationItemImpl GetConfigItem(IMethod methodMetaData)
         {
             if (methodMetaData != null && config.ContainsKey(methodMetaData.Key))
                 return config[methodMetaData.Key];
             return null;
         }
 
+        /// <summary>
+        /// Defines the configuration of the resolved method.
+        /// </summary>
         public IConfigurationItem<T> Setup<T>(System.Linq.Expressions.Expression<Func<T, object>> expression)
         {
             var methodVisitor = new MethodVisitor();
@@ -40,6 +46,9 @@ namespace AutoBox
             return CreateConfigurationItem<T>(methodVisitor);
         }
 
+        /// <summary>
+        /// Defines the configuration of the resolved method.
+        /// </summary>
         public IConfigurationItem<T> Setup<T>(System.Linq.Expressions.Expression<Action<T>> expression)
         {
             var methodVisitor = new MethodVisitor();
@@ -53,7 +62,7 @@ namespace AutoBox
         {
             var methodContainer = ServiceLocator.Current.GetInstance<IMethodContainer>();
 
-            IMethodMetaData metaData = methodContainer.CreateMethodMetaData(visitor.Method, visitor.Arguments);
+            IMethod metaData = methodContainer.Create(visitor.Method, visitor.Arguments);
 
             if (!config.ContainsKey(metaData.Key))
                 config.Add(metaData.Key, new ConfigurationItem<T>(this));

@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace AutoBox.Abstraction
 {
+    /// <summary>
+    /// Wraps a method invocaiton.
+    /// </summary>
     public interface IMethodInvocation
     {
         /// <summary>

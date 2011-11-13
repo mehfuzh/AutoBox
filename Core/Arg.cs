@@ -10,6 +10,10 @@ namespace AutoBox
     /// </summary>
     public static class Arg
     {
+        /// <summary>
+        /// Specifies that the argument can take variable input values.
+        /// </summary>
+        /// <typeparam name="T">Type of the argument</typeparam>
         [Variable]
         public static T Varies<T>()
         {
