@@ -19,7 +19,21 @@ namespace AutoBox.Specification
         }
 
         [Test]
-        public void ShouldReturnCachedItemForSimilarArgWhenVariableIsSpecified()
+        public void ShouldNotCacheWhenArgInInvoationDoesNotMatchSetup()
+        {
+            Container.Setup<ProductRepository>(x => x.Create(Arg.Varies<string>(), 1)).Caches(TimeSpan.FromSeconds(10));
+
+            const string product = "x";
+
+            var repository = ServiceLocator.Current.GetInstance<ProductController>();
+
+            var expected = repository.Create(product, 2).Id;
+
+            repository.Create(product, 2).Id.ShouldNotEqual(expected);
+        }
+
+        [Test]
+        public void ShouldReturnCachedItemForSimilarArgWhenVariesIsSpecified()
         {
             Container.Setup<ProductRepository>(x => x.Create(Arg.Varies<string>(), Arg.Varies<int>())).Caches(TimeSpan.FromSeconds(10));
 
@@ -33,7 +47,7 @@ namespace AutoBox.Specification
         }
 
         [Test]
-        public void ShoudlInvalidateForDifferentArgWhenVariableIsSpecified()
+        public void ShoudlInvalidateForDifferentArgWhenVariesIsSpecified()
         {
             Container.Setup<ProductRepository>(x => x.Create(Arg.Varies<string>(), Arg.Varies<int>())).Caches(TimeSpan.FromSeconds(10));
 
@@ -48,17 +62,18 @@ namespace AutoBox.Specification
         }
 
         [Test]
-        public void ShouldNotCacheWhenArgInInvoationDoesNotMatchSetup()
+        public void ShouldCacheRegarlessOfArgumentMatchWhenVaryByArgsIsSpecified()
         {
-            Container.Setup<ProductRepository>(x => x.Create(Arg.Varies<string>(), 1)).Caches(TimeSpan.FromSeconds(10));
+            Container.Setup<ProductRepository>(x => x.Create(string.Empty, 0)).Caches(TimeSpan.FromSeconds(10)).VaryByArgs();
 
-            const string product = "x";
+            string product = Guid.NewGuid().ToString();
 
             var repository = ServiceLocator.Current.GetInstance<ProductController>();
 
-            var expected = repository.Create(product, 2).Id;
+            var expected = repository.Create(product, 1).Id;
+            var actual = repository.Create(product, 1).Id;
 
-            repository.Create(product, 2).Id.ShouldNotEqual(expected);
+            expected.ShouldEqual(actual);
         }
 
         [TearDown]

@@ -7,9 +7,9 @@ namespace AutoBox.Abstraction
     internal interface IConfigurationItemImpl
     {
         /// <summary>
-        /// Invalidates all the methods for the underlying call.
+        /// Gets the cache duration defined for the calling method.
         /// </summary>
-        void InvalidateDependencies();
+        TimeSpan CacheDuration { get; }
 
         /// <summary>
         /// Gets or sets a value indicating the calling method is invalidated.
@@ -17,8 +17,18 @@ namespace AutoBox.Abstraction
         bool InValidated { get; set; }
 
         /// <summary>
-        /// Gets the cache duration defined for the calling method.
+        /// Gets the value indicating that argument validation should be skipped.
         /// </summary>
-        TimeSpan CacheDuration { get; }
+        bool IgnoreArgumentValidation { get; }
+
+        /// <summary>
+        /// Gets the resolved method.
+        /// </summary>
+        IMethod Method { get; }
+
+        /// <summary>   
+        /// Invalidates all the methods for the underlying call.
+        /// </summary>
+        void InvalidateDependencies();
     }
 }

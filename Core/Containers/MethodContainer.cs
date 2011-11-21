@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using AutoBox.Abstraction;
 using AutoBox.Attributes;
+using Microsoft.Practices.ServiceLocation;
 
 namespace AutoBox.Containers
 {
@@ -24,7 +25,7 @@ namespace AutoBox.Containers
         /// <summary>
         /// Extends the specific method for a particular array of arguments to be used with the container.
         /// </summary>
-        public IMethod Create(System.Reflection.MethodInfo methodInfo, Argument[] arguments)
+        IMethod IMethodContainer.Create(System.Reflection.MethodInfo methodInfo, Argument[] arguments)
         {
             var methodHash = new MethodHash(methodInfo);
 
@@ -41,16 +42,22 @@ namespace AutoBox.Containers
         /// <summary>
         /// Gets the extended container method.
         /// </summary>
-        public IMethod Get(System.Reflection.MethodInfo methodInfo, object[] arguments)
+        IConfigurationItemImpl IMethodContainer.Get(System.Reflection.MethodInfo methodInfo, object[] arguments)
         {
             var methodHash = new MethodHash(methodInfo);
+            var configuraiton = (Configuration) ServiceLocator.Current.GetInstance<IConfiguration>();
 
             if (methods.ContainsKey(methodHash))
             {
                 foreach (var metaData in methods[methodHash])
                 {
+                    var item = configuraiton.GetConfigItem(metaData);
+
+                    if (item.IgnoreArgumentValidation)
+                        return item;
+                    
                     if (metaData.ValidateArguments(arguments))
-                        return metaData;
+                        return item;
                 }
             }
             return null;

@@ -6,13 +6,13 @@ using System.Text;
 namespace AutoBox.Abstraction
 {
     /// <summary>
-    /// Defines the resolved method.
+    /// Defines cache configuration.
     /// </summary>
-    public interface IMethod : IArgumentValidator
+    public interface ICacheConfiguration<T> : IConfigurationItem<T>
     {
         /// <summary>
-        /// Gets the unique key for the resolved method.
+        /// Specifies to cache based on variable arguments.
         /// </summary>
-        string Key { get; }
+        IConfiguration VaryByArgs();
     }
 }

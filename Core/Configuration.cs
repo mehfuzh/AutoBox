@@ -62,12 +62,12 @@ namespace AutoBox
         {
             var methodContainer = ServiceLocator.Current.GetInstance<IMethodContainer>();
 
-            IMethod metaData = methodContainer.Create(visitor.Method, visitor.Arguments);
+            IMethod method = methodContainer.Create(visitor.Method, visitor.Arguments);
 
-            if (!config.ContainsKey(metaData.Key))
-                config.Add(metaData.Key, new ConfigurationItem<T>(this));
+            if (!config.ContainsKey(method.Key))
+                config.Add(method.Key, new ConfigurationItem<T>(this, method));
          
-            return config[metaData.Key] as IConfigurationItem<T>;
+            return config[method.Key] as IConfigurationItem<T>;
         }
 
         readonly IDictionary<string, IConfigurationItemImpl> config;

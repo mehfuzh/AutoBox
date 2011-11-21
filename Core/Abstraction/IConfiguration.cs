@@ -19,6 +19,6 @@ namespace AutoBox.Abstraction
         /// <summary>
         /// Defines the configuration of the resolved method.
         /// </summary>
-         IConfigurationItem<T> Setup<T>(Expression<Action<T>> expression); 
+        IConfigurationItem<T> Setup<T>(Expression<Action<T>> expression); 
     }
 }

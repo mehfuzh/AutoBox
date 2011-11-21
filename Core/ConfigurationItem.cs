@@ -11,11 +11,12 @@ namespace AutoBox
     /// <summary>
     /// Defines various config setting items.
     /// </summary>
-    internal class ConfigurationItem<T> : IConfigurationItem<T>, IConfigurationItemImpl
+    internal class ConfigurationItem<T> : IConfigurationItem<T>, IConfigurationItemImpl, ICacheConfiguration<T>
     {
-        public ConfigurationItem(Configuration configuration)
+        public ConfigurationItem(Configuration configuration, IMethod method)
         {
             this.configuration = configuration;
+            this.method = method;
             this.itemsToInValidate = new List<IConfigurationItemImpl>();
         }
 
@@ -46,6 +47,28 @@ namespace AutoBox
         }
 
         /// <summary>
+        /// Gets the value indicating that argument validation should be skipped.
+        /// </summary>
+        public bool IgnoreArgumentValidation 
+        {
+            get
+            {
+                return ignoreArgumentValidation;
+            }
+        }
+
+        /// <summary>
+        /// Gets the resolved method.
+        /// </summary>
+        public IMethod Method
+        {
+            get
+            {
+                return method;
+            }
+        }
+
+        /// <summary>
         /// Marks the member to invalidate its cache duration.
         /// </summary>
         public void InvalidateDependencies()
@@ -72,14 +95,26 @@ namespace AutoBox
         /// <summary>
         /// Specifies the cache duration.
         /// </summary>
-        public IConfiguration Caches(TimeSpan cacheDuration)
+        public ICacheConfiguration<T> Caches(TimeSpan cacheDuration)
         {
             this.cacheDuration = cacheDuration;
+            return this as ICacheConfiguration<T>;
+        }
+
+        /// <summary>
+        /// Specifies that the cache is variable to calling arguments.
+        /// </summary>
+        public IConfiguration VaryByArgs()
+        {
+            ignoreArgumentValidation = true;
+            // TODO : include logic variable arg caching.
             return configuration;
         }
 
         private TimeSpan cacheDuration;
         private bool inValidated;
+        private bool ignoreArgumentValidation;
+        private IMethod method;
 
         private readonly Configuration configuration;
         IList<IConfigurationItemImpl> itemsToInValidate;

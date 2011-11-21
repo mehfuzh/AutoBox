@@ -5,12 +5,12 @@ using System;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("AutoConfig")]
-[assembly: AssemblyDescription("AutoConfig bootstrap dependencies and defines caching mechanism without ever touching the code.")]
+[assembly: AssemblyTitle("AutoBox")]
+[assembly: AssemblyDescription("On the fly dependency injection and caching container")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("AutoConfig")]
-[assembly: AssemblyProduct("AutoConfig")]
-[assembly: AssemblyCopyright("Copyright © Mehfuz Hossain  2011")]
+[assembly: AssemblyCompany("AutoBox")]
+[assembly: AssemblyProduct("AutoBox")]
+[assembly: AssemblyCopyright("Copyright © 2011, MIT OS lincense")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,6 +32,6 @@ using System;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.2.0")]
-[assembly: AssemblyFileVersion("1.0.2.0")]
+[assembly: AssemblyVersion("1.0.3.0")]
+[assembly: AssemblyFileVersion("1.0.3.0")]
 [assembly: CLSCompliant(true)]

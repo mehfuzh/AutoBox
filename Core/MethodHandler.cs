@@ -11,18 +11,16 @@ namespace AutoBox
 {
     internal static class MethodHandler
     {
-       /// <summary>
-       /// Resolves the handler for the specific config item.
-       /// </summary>
+        /// <summary>
+        /// Resolves the invocation handler for a specific config settings defined by user.
+        /// </summary>
         public static IHandler Resolve(MethodInfo methodInfo, object[] arguments)
         {
             var configuration = (Configuration)ServiceLocator.Current.GetInstance<IConfiguration>();
 
-            var methodConfig = ServiceLocator.Current.GetInstance<IMethodContainer>();
+            var methodContainer = ServiceLocator.Current.GetInstance<IMethodContainer>();
 
-            IMethod metaData = methodConfig.Get(methodInfo, arguments);
-
-            var configItem = configuration.GetConfigItem(metaData);
+            var configItem = methodContainer.Get(methodInfo, arguments);
 
             IHandler handler = new BaseMethodHandler();
 
@@ -30,10 +28,10 @@ namespace AutoBox
             {
                 if (configItem.CacheDuration.TotalMilliseconds > 0)
                 {
-                    string containerId =  (ServiceLocator.Current as Locator.AutoBoxServiceLocator).TypeContainer.Id;
-                    string compositeKey = string.Format("{0}+{1}", metaData.Key, containerId);
+                    string containerId = (ServiceLocator.Current as Locator.AutoBoxServiceLocator).TypeContainer.Id;
+                    string compositeKey = string.Format("{0}+{1}", configItem.Method.Key, containerId);
 
-                    handler =   new CacheMethodHandler(compositeKey, configItem.CacheDuration, configItem.InValidated, arguments);
+                    handler = new CacheMethodHandler(compositeKey, configItem.CacheDuration, configItem.InValidated, arguments);
 
                     if (configItem.InValidated) configItem.InValidated = false;
                 }

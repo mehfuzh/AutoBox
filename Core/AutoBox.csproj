@@ -68,6 +68,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstraction\IArgumentValidator.cs" />
+    <Compile Include="Abstraction\ICacheConfiguration.cs" />
     <Compile Include="Abstraction\IConfigurationItemImpl.cs" />
     <Compile Include="Abstraction\ICacheProvider.cs" />
     <Compile Include="Abstraction\IConfiguration.cs" />

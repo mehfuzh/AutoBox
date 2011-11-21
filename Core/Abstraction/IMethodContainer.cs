@@ -8,6 +8,6 @@ namespace AutoBox.Abstraction
     internal interface IMethodContainer
     {
         IMethod Create(System.Reflection.MethodInfo methodInfo, Argument[] arguments);
-        IMethod Get(System.Reflection.MethodInfo methodInfo, object[] arguments);
+        IConfigurationItemImpl Get(System.Reflection.MethodInfo methodInfo, object[] arguments);
     }
 }

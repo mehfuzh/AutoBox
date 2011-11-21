@@ -46,7 +46,6 @@ namespace AutoBox
             return builder.ToString();
         }
 
-
         public bool ValidateArguments(object[] arguments)
         {
             if (arguments.Length == this.arguments.Length)
@@ -60,7 +59,6 @@ namespace AutoBox
             }
             return false;
         }
-
 
         private Argument[] arguments;
         private readonly MethodHash methodHash;

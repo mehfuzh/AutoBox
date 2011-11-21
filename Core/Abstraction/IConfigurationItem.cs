@@ -14,7 +14,7 @@ namespace AutoBox.Abstraction
         /// <summary>
         /// Specifies the cache duration.
         /// </summary>
-        IConfiguration Caches(TimeSpan cacheDuration);
+        ICacheConfiguration<T> Caches(TimeSpan cacheDuration);
 
         /// <summary>
         /// Invalides the cache for the specific call.
