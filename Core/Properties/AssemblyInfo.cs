@@ -10,7 +10,7 @@ using System;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("AutoBox")]
 [assembly: AssemblyProduct("AutoBox")]
-[assembly: AssemblyCopyright("Copyright © 2011, MIT OS lincense")]
+[assembly: AssemblyCopyright("Copyright © 2011, MIT OS license")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
