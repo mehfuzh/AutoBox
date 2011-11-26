@@ -36,7 +36,7 @@ section
 	border-radius: 5px;
 }
 
-#nuget-install span
+#nuget-install div:first
 {
 	font-family : "Tahoma", "Helvatica";
 	font-size : 24px;
