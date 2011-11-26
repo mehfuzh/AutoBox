@@ -65,7 +65,7 @@ As stated above by default, caching is done using memcached therefore to make *m
 	</configuration>
 
 
-Here you will notice that by default its pointing to *localhost*. However it can be an external IP pointing to __Amazon ElastiCache__(released a few weeks ago).Therefore its safe to say that memcached is a caching machanism and therefore the tool is agnostic of any underlying cloud service that you may choose.
+Here you will notice that by default its pointing to *localhost*. However it can be an external IP pointing to __Amazon ElastiCache__(released a few weeks ago).Therefore its safe to say that memcached is a caching machanism and the tool is agnostic of any underlying cloud service that you may choose.
 
 To test caching locally, you can use the  _CouchBase Membase server_ (Not limited to), it gives you a nice web based GUI to monitor the cache usage, configure memory and add clusters.
 
