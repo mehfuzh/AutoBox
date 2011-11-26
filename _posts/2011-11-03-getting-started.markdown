@@ -38,9 +38,7 @@ Finally, set your controller factory as current with the following line:
 	ControllerBuilder.Current.SetControllerFactory(new MyControllerFactory());
 
 
-Now, moving forward there is a method in IProductRepository lets say IProductReposiroty.GetAllProducts();
-
-You just dont want to hit database all the time, unless invalidated. Therefore you can further specify:
+Now, moving forward there is a method in IProductRepository lets say _IProductReposiroty.GetAllProducts()_. You just dont want to hit database all the time, unless invalidated. Therefore you can further specify:
 
 	Container.Setup<ProductRepository>(x=> x.GetAllProducts()).Caches(TimeSpan.FromMinutes(10));
 
@@ -48,11 +46,11 @@ This tells AutoBox to cache the result of the call that will automatically inval
 
 	Container.Setup<ProductRepository>(x=> x.Create(Arg.Varies<Product>()).Invalidates(x => x.GetAllProducts());
 
-_Arg.Varies_ speicifies that the repository call will be cached/invalidated for variable/dynamic arguments, this is very much to the asp.net output cache _VaryByParams_ option.However to cache an repository call, instead of Arg.Varies if you just want to pass default values and want to specify varible arguments setup fluently, you can always do:
+_Arg.Varies_ specifies that the repository call will be cached/invalidated for variable/dynamic arguments, this is very much to the asp.net output cache _VaryByParams_ option.However to cache an repository call, instead of _Arg.Varies_ if you just want to pass default values and want to specify varible arguments option fluently, you can always do:
 
 	Container.Setup<ProductRepository>(x=> x.GetPrdocutById(0)).Caches(TimeSpan.FromMinutes(10)).VaryByArgs();
 
-As stated above by default caching is done using memcached therefore to make *memcached* working you will need to include the following block in web.config (will be added automatically when installed from nuget).
+As stated above by default, caching is done using memcached therefore to make *memcached* working you will need to include the following block in web.config (will be added automatically when installed from nuget).
 
 
 	<?xml version="1.0" encoding="utf-8"?>
@@ -67,9 +65,9 @@ As stated above by default caching is done using memcached therefore to make *me
 	</configuration>
 
 
-Here you will notice that by default its pointing to *localhost*. However it can be an external IP pointing to __Amazon ElastiCache__(released a few weeks ago).Therefore its safe to say memcached is a caching machanism and therefore the tool is agnostic of underlying cloud service that you may choose.
+Here you will notice that by default its pointing to *localhost*. However it can be an external IP pointing to __Amazon ElastiCache__(released a few weeks ago).Therefore its safe to say that memcached is a caching machanism and therefore the tool is agnostic of any underlying cloud service that you may choose.
 
-To test caching locally, you can use the  _CouchBase Membase server_ (Not limited to), it gives you a nice web based GUI to monitor the cache usage, configure memory and add servers.
+To test caching locally, you can use the  _CouchBase Membase server_ (Not limited to), it gives you a nice web based GUI to monitor the cache usage, configure memory and add clusters.
 
 You can download it from this link:
 
@@ -78,7 +76,7 @@ You can download it from this link:
 
 Once installed, double-click the "Membase Console" from desktop which will take you through an easy wizard to configure memcached.
 
-Moving forward, there is a __AutoBox.Specification__ project. You can use *TestDriven.Net* to verify that all tests pass and you have filled the gaps correctly.Lastly, to raise any question or file issues, please use the github project url (can be reached via the fork link above).
+Moving forward, there is a __AutoBox.Specification__ project. You can use *TestDriven.Net* to verify that all tests pass and you have filled the gaps correctly.Lastly, to raise any question or file issues, please use the github project url (can be reached using the fork link above(top-right)).
 
 
 
