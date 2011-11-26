@@ -50,6 +50,10 @@ This tells AutoBox to cache the result of the call that will automatically inval
 
 _Arg.Varies_ speicifies *Any* arguments. It can be also used for caching , this will act similar to _VaryByParams_.
 
+However to cache an repository call, instead of Arg.Varies if you just want to pass default values and want to specify varible argument setup fluently, you can always do:
+
+	Container.Setup<ProductRepository>(x=> x.GetPrdocutById(0)).Caches(TimeSpan.FromMinutes(10)).VaryByArgs();
+
 Finally to make *Memcached* working you will need to have the following block in web.config (will be added automatically when installed from NUGet).
 
 

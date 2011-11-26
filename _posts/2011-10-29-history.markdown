@@ -1,0 +1,16 @@
+---
+layout : default
+title : Revision History 
+---
+
+v1.0.1 : Initial release
+
+v1.0.2 : Exception for null controller type (Skip resolve)
+
+v1.0.3 : Included fluent *VaryByArgs* for _Caches_ method
+
+
+
+
+
+
