@@ -1,3 +1,16 @@
+
+@font-face {
+    font-family: 'FuroreRegular';
+    src: url('fonts/Furore-webfont.eot');
+    src: url('fonts/Furore-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Furore-webfont.woff') format('woff'),
+         url('fonts/Furore-webfont.ttf') format('truetype'),
+         url('fonts/Furore-webfont.svg#FuroreRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 html { font-family: "helvetica", Helvetica, Arial }
 
 body
@@ -5,6 +18,7 @@ body
 	font-size : 14px;
 	line-height : 21px;
 	color : #333;
+
 	font-family : "Helvetica Neue", "Lucida Grande", "Helvetica", "Arial";
 	width : 950px;
 	padding : 60px 0px 50px 50px;
@@ -36,12 +50,12 @@ section
 	border-radius: 5px;
 }
 
-#nuget-install div:first
+#nuget-install div:first-child
 {
-	font-family : "Tahoma", "Helvatica";
-	font-size : 24px;
+	font-family : 'FuroreRegular';
+	font-size : 18px;
 	position : absolute;	
-	padding : 22px;		
+	padding : 25px;		
 }
 
 
