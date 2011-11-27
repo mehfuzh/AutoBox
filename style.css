@@ -41,7 +41,9 @@ section
 
 #nuget-install
 {
+	font-family : 'FuroreRegular';
 	background : url('images/nuget-background.jpg') repeat-x;
+	font-size : 18px;
 	height : 68px;
 	color :white;
 	width : 600px;
@@ -52,8 +54,6 @@ section
 
 #nuget-install div:first-child
 {
-	font-family : 'FuroreRegular';
-	font-size : 18px;
 	position : absolute;	
 	padding : 25px;		
 }
@@ -127,7 +127,6 @@ footer div
 	border : 1px solid #ccc;
 	float : left;
 	clear : both;
-	margin-bottom : 20px;		
 }
 
 footer div section
@@ -148,5 +147,12 @@ footer div section:first-child
 	-moz-border-radius : 5px;
 	-webkit-border-radius : 5px;
 	border-radius: 5px;	
+}
+
+#clear
+{
+	float : left;
+	height : 20px;
+	clear : both;
 }
 
