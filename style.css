@@ -11,7 +11,7 @@
 
 }
 
-html { font-family: "helvetica", Helvetica, Arial }
+html { font-family: "Helvetica", "Arial"; }
 
 body
 {
@@ -118,8 +118,29 @@ header img
 
 footer
 {
-  display:block;
-  font-size:10px;
+  	font-size:14px;
+}
+
+footer div
+{
+	width : 400px;
+	border : 1px solid #ccc;
+	float : left;
+	clear : both;
+	margin-bottom : 20px;		
+}
+
+footer div section
+{
+	margin :0px;
+	padding : 5px;
+	float : left;
+}
+
+footer div section:first-child
+{
+	color : black;
+	background-color : #ccc;
 }
 
 .content img:first-child
