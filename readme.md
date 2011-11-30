@@ -75,24 +75,9 @@ To test caching locally, you can use the  _CouchBase Membase server_ (Not limite
 
 You can download it from this link:
 
-<a href="http://www.couchbase.com/products-and-services/memcached/" target="_blank_">http://www.couchbase.com/products-and-services/memcached/ </a>
-
+http://www.couchbase.com/products-and-services/memcached/ 
 
 Once installed, double-click the "Membase Console" from desktop which will take you through an easy wizard to configure memcached.
 
 Moving forward, there is a __AutoBox.Specification__ project. You can use *TestDriven.Net* to verify that all tests pass and you have filled the gaps correctly.Lastly, to raise any question or file issues, please use the github project url (can be reached using the fork link above(top-right)).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
