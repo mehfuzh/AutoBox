@@ -14,7 +14,7 @@ namespace AutoBox.Abstraction
         /// <summary>
         /// Gets or sets a value indicating the calling method is invalidated.
         /// </summary>
-        bool InValidated { get; set; }
+        bool IsInvalidated { get; set; }
 
         /// <summary>
         /// Gets the value indicating that argument validation should be skipped.

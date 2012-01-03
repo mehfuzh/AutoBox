@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
+using System.Linq.Expressions;
+using AutoBox.Ast;
 
 namespace AutoBox
 {
@@ -29,7 +31,7 @@ namespace AutoBox
         {
             get
             {
-                return string.Format("{0}{1}", methodHash.GetHashCode(), GetArgumentHashCode("."));
+                return string.Format("{0}{1}", methodHash.GetHashCode(), GetArgumentHashCode("+"));
             }
         }
 
@@ -40,7 +42,13 @@ namespace AutoBox
             foreach (var argument in arguments)
             {
                 builder.Append(separator);
-                builder.Append(argument.Id);
+
+                if (argument.IsVariable)
+                    builder.Append(argument.IsVariable);
+                else if (argument.RawValue == null)
+                    builder.Append("null");
+                else
+                    builder.Append(argument.RawValue);
             }
 
             return builder.ToString();
@@ -60,7 +68,7 @@ namespace AutoBox
             return false;
         }
 
-        private Argument[] arguments;
+        private readonly Argument[] arguments;
         private readonly MethodHash methodHash;
     }
 }

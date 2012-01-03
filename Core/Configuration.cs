@@ -25,7 +25,7 @@ namespace AutoBox
         /// <summary>
         /// Gets the config item for the target method.
         /// </summary>
-        /// <param name="methodMetaData">Defines the method metadata</param>
+        /// <param name="methodMetaData">Defines the method meta data</param>
         /// <returns></returns>
         internal IConfigurationItemImpl GetConfigItem(IMethod methodMetaData)
         {

@@ -42,6 +42,20 @@ namespace AutoBox.Specification
            actual.ShouldEqual(expectedMessage);
         }
 
+
+        public interface IDummyRepository
+        {
+            Product Get(Product product);
+        }
+
+        public class DummyRepository : IDummyRepository
+        {
+            public Product Get(Product product)
+            {
+                return Store.All.Where(x => x.Title == product.Title).FirstOrDefault();
+            }
+        }
+
         public interface IOrphanService
         {
         }

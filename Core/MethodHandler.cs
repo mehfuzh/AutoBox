@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using AutoBox.Abstraction;
+using AutoBox.Locator;
 using Microsoft.Practices.ServiceLocation;
 using AutoBox.Handlers;
 using System.Reflection;
@@ -16,10 +17,7 @@ namespace AutoBox
         /// </summary>
         public static IHandler Resolve(MethodInfo methodInfo, object[] arguments)
         {
-            var configuration = (Configuration)ServiceLocator.Current.GetInstance<IConfiguration>();
-
             var methodContainer = ServiceLocator.Current.GetInstance<IMethodContainer>();
-
             var configItem = methodContainer.Get(methodInfo, arguments);
 
             IHandler handler = new BaseMethodHandler();
@@ -28,12 +26,12 @@ namespace AutoBox
             {
                 if (configItem.CacheDuration.TotalMilliseconds > 0)
                 {
-                    string containerId = (ServiceLocator.Current as Locator.AutoBoxServiceLocator).TypeContainer.Id;
+                    string containerId = ((AutoBoxServiceLocator) ServiceLocator.Current).TypeContainer.Id;
                     string compositeKey = string.Format("{0}+{1}", configItem.Method.Key, containerId);
 
-                    handler = new CacheMethodHandler(compositeKey, configItem.CacheDuration, configItem.InValidated, arguments);
+                    handler = new CacheMethodHandler(compositeKey, configItem.CacheDuration, configItem.IsInvalidated, arguments);
 
-                    if (configItem.InValidated) configItem.InValidated = false;
+                    if (configItem.IsInvalidated) configItem.IsInvalidated = false;
                 }
                 // has items to invalidate.
                 configItem.InvalidateDependencies();

@@ -68,6 +68,14 @@ namespace AutoBox.Ast
             return expression;
         }
 
+        public override Expression VisitNew(NewExpression expression)
+        {
+            this.type = expression.Type;
+            this.value = Expression.Lambda(expression).Compile().DynamicInvoke();
+
+            return expression;
+        }
+
         private bool isVariable;
         private object value;
         private Type type;

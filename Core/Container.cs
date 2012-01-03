@@ -15,12 +15,12 @@ using AutoBox.Containers;
 namespace AutoBox
 {
     /// <summary>
-    /// Entry-point for initailizing model depndencies and caching.
+    /// Entry-point for initializing model dependencies and caching.
     /// </summary>
     public static class Container
     {
         /// <summary>
-        /// Initalizes dependencies and caching handlers for current project.
+        /// Initializes dependencies and caching handlers for current project.
         /// </summary>
         public static void Init()
         {
@@ -28,7 +28,7 @@ namespace AutoBox
         }
 
         /// <summary>
-        /// Initailizes dependencies and caching handlers for an assembly.
+        /// Initializes dependencies and caching handlers for an assembly.
         /// </summary>
         public static void Init(IResolver resolver)
         {
@@ -43,7 +43,7 @@ namespace AutoBox
         }
 
         /// <summary>
-        /// Defines specific config for a particular member.
+        /// Specifies configuration for the target member.
         /// </summary>
         public static IConfigurationItem<T> Setup<T>(Expression<Func<T, object>> expression) where T : class
         {
@@ -51,7 +51,7 @@ namespace AutoBox
         }
 
         /// <summary>
-        /// Defines specific config for a particular member.
+        /// Specifies configuration for the target member.
         /// </summary>
         public static IConfigurationItem<T> Setup<T>(Expression<Action<T>> expression) where T : class
         {

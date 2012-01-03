@@ -23,28 +23,12 @@ namespace AutoBox
         /// <summary>
         /// Gets the cache duration defined for the calling method.
         /// </summary>
-        public TimeSpan CacheDuration
-        {
-            get
-            {
-                return cacheDuration;
-            }
-        }
+        public TimeSpan CacheDuration { get; private set; }
 
         /// <summary>
         /// Gets a value indicating the calling method is invalidated.
         /// </summary>
-        public bool InValidated
-        {
-            get
-            {
-                return inValidated;
-            }
-            set
-            {
-                inValidated = value;
-            }
-        }
+        public bool IsInvalidated { get; set; }
 
         /// <summary>
         /// Gets the value indicating that argument validation should be skipped.
@@ -73,11 +57,11 @@ namespace AutoBox
         /// </summary>
         public void InvalidateDependencies()
         {
-            itemsToInValidate.ToList().ForEach(x => x.InValidated = true);
+            itemsToInValidate.Where(x => x != null).ToList().ForEach(x => x.IsInvalidated = true);
         }
 
         /// <summary>
-        /// Invalides the cache for the specific call.
+        /// Invalidates the cache for the specific call.
         /// </summary>
         public IConfiguration Invalidates(Expression<Func<T, object>> expression)
         {
@@ -97,7 +81,7 @@ namespace AutoBox
         /// </summary>
         public ICacheConfiguration<T> Caches(TimeSpan cacheDuration)
         {
-            this.cacheDuration = cacheDuration;
+            this.CacheDuration = cacheDuration;
             return this as ICacheConfiguration<T>;
         }
 
@@ -111,8 +95,6 @@ namespace AutoBox
             return configuration;
         }
 
-        private TimeSpan cacheDuration;
-        private bool inValidated;
         private bool ignoreArgumentValidation;
         private IMethod method;
 

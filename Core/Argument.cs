@@ -13,18 +13,31 @@ namespace AutoBox
     {
         internal Argument(Expression expression)
         {
-            this.id = Guid.NewGuid();
             this.expression = expression;
         }
 
+
         /// <summary>
-        /// Gets the unique id for the current argument.
+        /// Gets the raw value from expression.
         /// </summary>
-        public string Id
+        internal object RawValue
         {
             get
             {
-                return id.ToString().Replace("-", string.Empty);
+                VisitExpression();
+                return visitor.Value;
+            }
+        }
+
+        /// <summary>
+        /// Gets a value indicating if the argument can contain dynamic value.
+        /// </summary>
+        internal bool IsVariable
+        {
+            get
+            {
+                VisitExpression();
+                return visitor.IsVariable;
             }
         }
 
@@ -33,26 +46,31 @@ namespace AutoBox
         /// </summary>
         public bool Validate(object arg)
         {
-            var visitor = new ArgumentVisitor();
-
-            visitor.Visit(expression);
+            VisitExpression();
 
             if (visitor.IsVariable)
                 return true;
 
             if (visitor.Type.IsPrimitive || visitor.Type.IsEnum)
-            {
                 return visitor.Value.Equals(arg);
-            }
-            else if (typeof(string).IsAssignableFrom(visitor.Type))
-            {
+            if (typeof(string).IsAssignableFrom(visitor.Type))
                 return visitor.Value == arg;
-            }
-
+            
             return Object.ReferenceEquals(arg, visitor.Value);
         }
 
-        private readonly Guid id;
+        private void VisitExpression()
+        {
+            if (visitor == null)
+            {
+                visitor = new ArgumentVisitor();
+                visitor.Visit(expression);
+            }
+        }
+
+        private bool isVariable;
+        private string rawValue;
+        private ArgumentVisitor visitor;
         private readonly Expression expression;
     }
 }
