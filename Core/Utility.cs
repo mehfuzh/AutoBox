@@ -13,9 +13,9 @@ namespace AutoBox
         /// <summary>
         /// Cretes the unique md5 key from object hashcode.
         /// </summary>
-        public static string GetUniqueKey(this CacheMethodHandler handler)
+        public static string GetUniqueKey(this CacheMethodHandler handler, string prefix)
         {
-            return string.Format("{0}_{1}", typeof(Container).Namespace, CalculateMD5Hash(handler.GetHashCode().ToString(CultureInfo.CurrentCulture)));
+            return string.Format("{0}.{1}", prefix, CalculateMD5Hash(handler.GetHashCode().ToString(CultureInfo.CurrentCulture)));
         }
 
         public static string CalculateMD5Hash(this string input)

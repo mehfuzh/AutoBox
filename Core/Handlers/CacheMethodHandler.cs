@@ -38,7 +38,8 @@ namespace AutoBox.Handlers
         {
             var provider = CacheProviderFactory.Create();
 
-            string cacheKey = this.GetUniqueKey();
+            string prefix = string.Format("{0}.{1}", invocation.Method.DeclaringType.Name, invocation.Method.Name);
+            string cacheKey = this.GetUniqueKey(prefix);
 
             object result = invalidated ? null : provider.GetObject(cacheKey);
 
