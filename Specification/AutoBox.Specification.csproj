@@ -60,7 +60,6 @@
   <ItemGroup>
     <Compile Include="ArgumentSpecs.cs" />
     <Compile Include="AutoBoxSpecs.cs" />
-    <Compile Include="NinjectSpecs.cs" />
     <Compile Include="ResolveAssemblySpecs.cs" />
     <Compile Include="Services\AccountService.cs" />
     <Compile Include="Services\Abstraction\IAccountService.cs" />
