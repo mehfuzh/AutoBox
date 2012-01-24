@@ -26,7 +26,7 @@ namespace AutoBox
             {
                 if (configItem.CacheDuration.TotalMilliseconds > 0)
                 {
-                    string containerId = ((AutoBoxServiceLocator) ServiceLocator.Current).TypeContainer.Id;
+                    string containerId = ((AutoBoxServiceLocator) ServiceLocator.Current).Container.GetHashCode().ToString();
                     string compositeKey = string.Format("{0}+{1}", configItem.Method.Key, containerId);
 
                     handler = new CacheMethodHandler(compositeKey, configItem.CacheDuration, configItem.IsInvalidated, arguments);

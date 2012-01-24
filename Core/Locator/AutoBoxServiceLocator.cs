@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Practices.ServiceLocation;
-using AutoBox.Containers;
+using AutoBox.Abstraction;
 
 namespace AutoBox.Locator
 {
@@ -11,19 +11,19 @@ namespace AutoBox.Locator
     /// </summary>
     public class AutoBoxServiceLocator : ServiceLocatorImplBase
     {
-        internal AutoBoxServiceLocator(TypeContainer typeContainer)
+        internal AutoBoxServiceLocator(IContainer container)
         {
-            this.typeContainer = typeContainer;
+            this.container = container;
         }
 
         /// <summary>
         /// Gets the container associated with this locator.
         /// </summary>
-        internal TypeContainer TypeContainer
+        internal IContainer Container
         {
             get
             {
-                return typeContainer;
+                return container;
             }
         }
 
@@ -42,7 +42,7 @@ namespace AutoBox.Locator
         {
             if (serviceType != null)
             {
-                return typeContainer.Resolve(serviceType);
+                return container.Resolve(serviceType);
             }
             return null;
         }
@@ -59,6 +59,6 @@ namespace AutoBox.Locator
             return base.FormatActivationExceptionMessage(actualException, serviceType, key);
         }
 
-        private readonly TypeContainer typeContainer;
+        private readonly IContainer container;
     }
 }

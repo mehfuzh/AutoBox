@@ -32,12 +32,12 @@ namespace AutoBox
         /// </summary>
         public static void Init(IResolver resolver)
         {
-            var container = new TypeContainer(resolver.Assembly);
+            var typeContainer = new TypeContainer(resolver.Assembly, new StandardContainer());
 
-            container.Register(typeof(IConfiguration), typeof(Configuration));
-            container.Register(typeof(IMethodContainer), typeof(MethodContainer));
+            typeContainer.Register(typeof(IConfiguration), typeof(Configuration));
+            typeContainer.Register(typeof(IMethodContainer), typeof(MethodContainer));
 
-            ServiceLocator.SetLocatorProvider(() => new AutoBoxServiceLocator(container));
+            ServiceLocator.SetLocatorProvider(() => new AutoBoxServiceLocator(typeContainer));
 
             configuration =  (IConfiguration) ServiceLocator.Current.GetInstance(typeof(IConfiguration));
         }

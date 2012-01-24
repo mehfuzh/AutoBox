@@ -3,48 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using AutoBox.Abstraction;
-using AutoBox.Interceptors;
-using AutoBox.Attributes;
 
 namespace AutoBox.Containers
 {
     /// <summary>
     /// Register and maps the target type.
     /// </summary>
-    public class TypeContainer
+    public class TypeContainer : IContainer
     {
         /// <summary>
         /// Initialize the instance of <see cref="TypeContainer"/> class.
         /// </summary>
-        public TypeContainer(Assembly assembly)
+        public TypeContainer(Assembly assembly, IContainer container)
         {
             this.assembly = assembly;
-            
-            id = Guid.NewGuid().ToString();
-            mappings = new Dictionary<Type, Type>();
-            instances = new Dictionary<Type, object>();
-        }
-
-        /// <summary>
-        /// Gets the instances associated with the current container.
-        /// </summary>
-        public IDictionary<Type, object> Instances
-        {
-            get
-            {
-                return instances;
-            }
-        }
-
-        /// <summary>
-        /// Gets the unique id of the container.
-        /// </summary>
-        public string Id
-        {
-            get
-            {
-                return id;
-            }
+            this.container = container;
         }
 
         /// <summary>
@@ -52,7 +25,7 @@ namespace AutoBox.Containers
         /// </summary>
         public void Register(Type @interface, Type targetType)
         {
-            mappings.Add(@interface, targetType);
+            container.Register(@interface, targetType);
         }
 
         /// <summary>
@@ -70,22 +43,12 @@ namespace AutoBox.Containers
         public object Resolve(Type targetType)
         {
             RegisterInterfaceWhenNecessary(targetType);
+           
+            var instance = container.Resolve(targetType);
 
-            if (mappings.ContainsKey(targetType))
-            {
-                object instance = null;
-
-                if (!instances.ContainsKey(targetType))
-                {
-                    if (mappings[targetType].GetCustomAttributes(typeof(NoInterceptAttribute), false).Length ==0)
-                        instance = new ProxyGenerator(new MethodInterceptor(mappings[targetType])).Create(targetType);
-                    else
-                        instance = Activator.CreateInstance(mappings[targetType]);
-
-                    instances.Add(targetType, instance);
-                }
-                return instances[targetType];
-            }
+            if (instance != null)
+                return instance;
+            
             object result = ResolveDepencies(targetType);
 
             if (result == null)
@@ -96,10 +59,9 @@ namespace AutoBox.Containers
 
         private void RegisterInterfaceWhenNecessary(Type interfaceType)
         {
-            if (interfaceType.IsInterface && !mappings.ContainsKey(interfaceType))
+            if (interfaceType.IsInterface && container.Resolve(interfaceType) == null)
             {
                 string targetName = interfaceType.Name.Substring(1, interfaceType.Name.Length - 1);
-
                 IEnumerable<Type> resolvedTypes = assembly.GetTypes().Where(x => x.Name == targetName);
 
                 if (resolvedTypes.Count() == 0)
@@ -140,10 +102,7 @@ namespace AutoBox.Containers
             return null;
         }
 
-        private readonly IDictionary<Type, Type> mappings;
-        private readonly IDictionary<Type, object> instances;
         private readonly Assembly assembly;
-        private readonly string id;
-
+        private readonly IContainer container;
     }
 }

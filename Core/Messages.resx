@@ -126,4 +126,7 @@
   <data name="NoSuitableCtorToResolve" xml:space="preserve">
     <value>No suitable constructor found for {0} to resolve</value>
   </data>
+  <data name="TargetContainerCanNotBeNull" xml:space="preserve">
+    <value>Target container can not be null.</value>
+  </data>
 </root>

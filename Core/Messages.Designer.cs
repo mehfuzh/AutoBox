@@ -86,5 +86,14 @@ namespace AutoBox {
                 return ResourceManager.GetString("NoSuitableCtorToResolve", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target container can not be null..
+        /// </summary>
+        internal static string TargetContainerCanNotBeNull {
+            get {
+                return ResourceManager.GetString("TargetContainerCanNotBeNull", resourceCulture);
+            }
+        }
     }
 }
