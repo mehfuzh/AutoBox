@@ -32,7 +32,7 @@ namespace AutoBox
         /// </summary>
         public static void Init(IResolver resolver)
         {
-            var typeContainer = new TypeContainer(resolver.Assembly, new StandardContainer());
+            var typeContainer = new TypeContainer(resolver.Assembly, new WindsorContainer());
 
             typeContainer.Register(typeof(IConfiguration), typeof(Configuration));
             typeContainer.Register(typeof(IMethodContainer), typeof(MethodContainer));

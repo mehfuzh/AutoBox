@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>AutoBox</id>
-    <version>1.0.4</version>
+    <version>1.1.0</version>
     <authors>Mehfuz Hossain</authors>
     <summary>On the fly dependency Injection and caching container</summary>
     <description>
@@ -11,14 +11,12 @@
     <language>en-US</language>
     <projectUrl>http://mehfuzh.github.com/AutoBox/</projectUrl>
     <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
-    <tags>caching configuration  memcache asp.net mvc</tags>
+    <tags>caching configuration  memcache asp.net mvc windsor</tags>
 
     <dependencies>
-
-      <dependency id="Castle.Core" version="3.0.0.2001" />
+      <dependency id="Castle.Windsor" version="3.0.0.4001" />
       <dependency id="CommonServiceLocator" version="1.0" />
       <dependency id="Newtonsoft.Json" version="4.0.3" />
-
     </dependencies>
     
   </metadata>

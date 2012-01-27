@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace AutoBox.Abstraction
 {
-    internal interface IMethodInterceptor
+    public interface IMethodInterceptor
     {
         void Intercept(IMethodInvocation invocation);
     }

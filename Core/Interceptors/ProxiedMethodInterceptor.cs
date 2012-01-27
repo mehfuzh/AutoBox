@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Castle.DynamicProxy;
 using AutoBox.Abstraction;
+using Castle.DynamicProxy;
 
 namespace AutoBox.Interceptors
 {
-    internal class ProxiedMethodInterceptor : IInterceptor
+    public class ProxiedMethodInterceptor<T> : IInterceptor
     {
-        public ProxiedMethodInterceptor(IMethodInterceptor interceptor)
+        public ProxiedMethodInterceptor()
         {
-            this.interceptor = interceptor;
+            this.interceptor = new MethodInterceptor(typeof(T));
         }
 
         public void Intercept(IInvocation invocation)

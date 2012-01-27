@@ -49,8 +49,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core">
-      <HintPath>..\packages\Castle.Core.3.0.0.2001\lib\net40-client\Castle.Core.dll</HintPath>
+    <Reference Include="Castle.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.0.0.4001\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.0.0.4001\lib\net40\Castle.Windsor.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation">
       <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -78,7 +81,6 @@
     <Compile Include="Abstraction\IMethodContainer.cs" />
     <Compile Include="Abstraction\IMethod.cs" />
     <Compile Include="Abstraction\IMethodInterceptor.cs" />
-    <Compile Include="Abstraction\IInterceptorSettings.cs" />
     <Compile Include="Abstraction\IMethodInvocation.cs" />
     <Compile Include="Abstraction\IHandler.cs" />
     <Compile Include="Arg.cs" />
@@ -100,7 +102,6 @@
     <Compile Include="ConfigurationItem.cs" />
     <Compile Include="Containers\TypeContainer.cs" />
     <Compile Include="Ast\Abstraction\ExpressionVisitor.cs" />
-    <Compile Include="ProxyGenerator.cs" />
     <Compile Include="Interceptors\ProxiedMethodInterceptor.cs" />
     <Compile Include="Messages.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -117,11 +118,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resolve.cs" />
     <Compile Include="Resolver\AssemblyResolver.cs" />
-    <Compile Include="StandardContainer.cs" />
     <Compile Include="Utility.cs" />
+    <Compile Include="WindsorContainer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Libraries\BeIT.MemCached\BeIT.MemCached.csproj">
