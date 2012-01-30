@@ -32,7 +32,11 @@ namespace AutoBox.Locator
         /// </summary>
         protected override IEnumerable<object> DoGetAllInstances(Type serviceType)
         {
-            throw new AutoBoxException("Iteration of all instances is not supported");
+            if (serviceType != null)
+            {
+                return container.ResolveAll(serviceType);
+            }
+            return null;
         }
 
         /// <summary>

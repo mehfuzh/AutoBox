@@ -42,6 +42,28 @@ namespace AutoBox.Specification
            actual.ShouldEqual(expectedMessage);
         }
 
+        [Test]
+        public void ShouldAssertMultipleRegistrationForGetAllInstances()
+        {
+            var strapper = ServiceLocator.Current.GetAllInstances<IBootStrapper>();
+            strapper.Count().ShouldEqual(2);
+            strapper.ToList().ForEach((t) => t.Execute());
+        }
+
+        public interface IBootStrapper
+        {
+            void Execute();
+        }
+
+        public class RegisterRoutes : IBootStrapper
+        {
+            public void Execute(){}
+        }
+
+        public class RegisterControllers : IBootStrapper
+        {
+            public void Execute(){}
+        }
 
         public interface IDummyRepository
         {

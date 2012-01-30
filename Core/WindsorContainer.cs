@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AutoBox.Abstraction;
 using AutoBox.Attributes;
@@ -44,6 +45,18 @@ namespace AutoBox
             if (container.Kernel.HasComponent(targetType))
             {
                 return container.Resolve(targetType);
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// Resolves all registered instances for a specific service type.
+        /// </summary>
+        public IList<object> ResolveAll(Type serviceType)
+        {
+            if (container.Kernel.HasComponent(serviceType))
+            {
+                return new List<object>((object[])container.ResolveAll(serviceType));
             }
             return null;
         }

@@ -53,7 +53,9 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Content\app.config.transform" />
+    <None Include="Content\app.config.transform">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Content\web.config.transform">
       <SubType>Designer</SubType>
     </None>

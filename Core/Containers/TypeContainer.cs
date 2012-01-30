@@ -42,7 +42,7 @@ namespace AutoBox.Containers
         /// </summary>
         public object Resolve(Type targetType)
         {
-            RegisterInterfaceWhenNecessary(targetType);
+            RegisterService(targetType);
            
             var instance = container.Resolve(targetType);
 
@@ -57,24 +57,31 @@ namespace AutoBox.Containers
             return result;
         }
 
-        private void RegisterInterfaceWhenNecessary(Type interfaceType)
+        /// <summary>
+        /// Resolves all registered instances for a specific service type.
+        /// </summary>
+        public IList<object> ResolveAll(Type serviceType)
         {
-            if (interfaceType.IsInterface && container.Resolve(interfaceType) == null)
-            {
-                string targetName = interfaceType.Name.Substring(1, interfaceType.Name.Length - 1);
-                IEnumerable<Type> resolvedTypes = assembly.GetTypes().Where(x => x.Name == targetName);
+            RegisterService(serviceType);
+            return container.ResolveAll(serviceType);
+        }
 
+        private void RegisterService(Type serviceType)
+        {
+            if (serviceType.IsInterface && container.Resolve(serviceType) == null)
+            {
+                IEnumerable<Type> resolvedTypes = assembly.GetTypes().Where(x => x.GetInterfaces().Any(t => t == serviceType));
+                
                 if (resolvedTypes.Count() == 0)
                 {
-                    throw new AutoBoxException(string.Format(Messages.FailedToResolveCorrespondingType, interfaceType.Name));
+                    throw new AutoBoxException(string.Format(Messages.FailedToResolveCorrespondingType, serviceType.Name));
                 }
 
                 foreach (var resolvedType in resolvedTypes)
                 {
-                    if (resolvedType != null && interfaceType.IsAssignableFrom(resolvedType))
+                    if (resolvedType != null && serviceType.IsAssignableFrom(resolvedType))
                     {
-                        Register(interfaceType, resolvedType);
-                        break;
+                        Register(serviceType, resolvedType);
                     }
                 }
             }
