@@ -25,6 +25,7 @@ namespace AutoBox.Containers
         /// </summary>
         public void Register(Type @interface, Type targetType)
         {
+            RegisterDependencies(targetType);
             container.Register(@interface, targetType);
         }
 
@@ -40,19 +41,19 @@ namespace AutoBox.Containers
         /// <summary>
         /// Resolve the target type with necessary dependencies.
         /// </summary>
-        public object Resolve(Type targetType)
+        public object Resolve(Type serviceType)
         {
-            RegisterService(targetType);
-           
-            var instance = container.Resolve(targetType);
+            ResigerServiceAsNecessary(serviceType);
+            
+            var instance = container.Resolve(serviceType);
 
             if (instance != null)
                 return instance;
             
-            object result = ResolveDepencies(targetType);
+            object result = ResolveOnDemand(serviceType);
 
             if (result == null)
-                throw new ArgumentException(string.Format(Messages.NoSuitableCtorToResolve, targetType.Name));
+                throw new ArgumentException(string.Format(Messages.NoSuitableCtorToResolve, serviceType.Name));
             
             return result;
         }
@@ -62,32 +63,50 @@ namespace AutoBox.Containers
         /// </summary>
         public IList<object> ResolveAll(Type serviceType)
         {
-            RegisterService(serviceType);
+            ResigerServiceAsNecessary(serviceType);
             return container.ResolveAll(serviceType);
+        }
+
+        private void ResigerServiceAsNecessary(Type serviceType)
+        {
+            if (serviceType.IsNewService(container)) RegisterService(serviceType);
         }
 
         private void RegisterService(Type serviceType)
         {
-            if (serviceType.IsInterface && container.Resolve(serviceType) == null)
-            {
-                IEnumerable<Type> resolvedTypes = assembly.GetTypes().Where(x => x.GetInterfaces().Any(t => t == serviceType));
+            IEnumerable<Type> resolvedTypes = assembly.GetTypes().Where(x => x.GetInterfaces().Any(t => t == serviceType));
                 
-                if (resolvedTypes.Count() == 0)
-                {
-                    throw new AutoBoxException(string.Format(Messages.FailedToResolveCorrespondingType, serviceType.Name));
-                }
+            if (resolvedTypes.Count() == 0)
+            {
+                throw new AutoBoxException(string.Format(Messages.FailedToResolveCorrespondingType, serviceType.Name));
+            }
 
-                foreach (var resolvedType in resolvedTypes)
+            foreach (var resolvedType in resolvedTypes)
+            {
+                if (resolvedType != null && serviceType.IsAssignableFrom(resolvedType))
                 {
-                    if (resolvedType != null && serviceType.IsAssignableFrom(resolvedType))
+                    Register(serviceType, resolvedType);
+                }
+            }
+        }
+
+        private void RegisterDependencies(Type resolvedType)
+        {
+            foreach (var constructor in resolvedType.GetConstructors())
+            {
+                var parameterInfos = constructor.GetParameters();
+
+                foreach (var parameterInfo in parameterInfos)
+                {
+                    if (parameterInfo.ParameterType.IsNewService(container))
                     {
-                        Register(serviceType, resolvedType);
+                        RegisterService(parameterInfo.ParameterType);
                     }
                 }
             }
         }
 
-        private object ResolveDepencies(Type targetType)
+        private object ResolveOnDemand(Type targetType)
         {
             foreach (var constructor in targetType.GetConstructors())
             {
@@ -97,7 +116,7 @@ namespace AutoBox.Containers
 
                 for (int index = 0; index < parameters.Length; index++)
                 {
-                    var value = Resolve(parameters[index].ParameterType);
+                    var value = Resolve(parameters[index].ParameterType);   
 
                     if (value == null)
                         continue;

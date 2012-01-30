@@ -5,6 +5,7 @@ using System.Text;
 using System.Security.Cryptography;
 using AutoBox.Handlers;
 using System.Globalization;
+using AutoBox.Abstraction;
 
 namespace AutoBox
 {
@@ -15,7 +16,15 @@ namespace AutoBox
         /// </summary>
         public static string GetUniqueKey(this CacheMethodHandler handler, string prefix)
         {
-            return string.Format("{0}.{1}", prefix, CalculateMD5Hash(handler.GetHashCode().ToString(CultureInfo.CurrentCulture)));
+            return string.Format("{0}+{1}", prefix, CalculateMD5Hash(handler.GetHashCode().ToString(CultureInfo.CurrentCulture)));
+        }
+
+        /// <summary>
+        /// Checks if the service is new.
+        /// </summary>
+        public static bool IsNewService(this Type serviceType, IContainer container)
+        {
+            return serviceType.IsInterface && container.Resolve(serviceType) == null;
         }
 
         public static string CalculateMD5Hash(this string input)

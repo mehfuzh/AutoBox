@@ -50,6 +50,26 @@ namespace AutoBox.Specification
             strapper.ToList().ForEach((t) => t.Execute());
         }
 
+        [Test]
+        public void ShouldResolveNestedDepedencies()
+        {
+            var service = ServiceLocator.Current.GetInstance<IParentService>();
+            service.ShouldNotBeNull();
+        }
+
+        public interface IParentService 
+        {
+
+        }
+
+        public class ParentServiceImpl : IParentService
+        {
+            public ParentServiceImpl(IDummyRepository dummy)
+            {
+
+            }
+        }
+
         public interface IBootStrapper
         {
             void Execute();
