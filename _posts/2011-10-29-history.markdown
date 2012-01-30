@@ -4,9 +4,13 @@ title : Revision History
 ---
 
 v1.0.1 : Initial release
+
 v1.0.2 : Exception for null controller type (Skip resolve)
+
 v1.0.3 : Included fluent *VaryByArgs* for _Caches_ method
+
 v1.0.4 : Arg.Varies fix for Invalidating cache.
+
 v1.1.2 : Dependency processing by _Castle.Windsor_ and nested dependency resolve bug fix.
 
 
