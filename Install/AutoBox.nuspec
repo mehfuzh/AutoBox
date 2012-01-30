@@ -2,11 +2,11 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>AutoBox</id>
-    <version>1.1.0</version>
+    <version>1.1.1</version>
     <authors>Mehfuz Hossain</authors>
     <summary>On the fly dependency Injection and caching container</summary>
     <description>
-      The tool dynamically injects dependencies based on convention. Also, let you cache repository calls to memcached (the most poular cross-plaform caching system).
+      The tool dynamically injects dependencies and let you cache repository calls to memcached (the most poular cross-plaform caching system).
     </description>
     <language>en-US</language>
     <projectUrl>http://mehfuzh.github.com/AutoBox/</projectUrl>
@@ -24,6 +24,7 @@
   <files>
     
     <file src="..\..\Content\web.config.transform" target="content"/>
+    <file src="..\..\Content\app.config.transform" target="content"/>
     <file src="..\..\bin\Debug\AutoBox.dll" target="lib/Net40"/>
     <file src="..\..\bin\Debug\AutoBox.XML" target="lib/Net40"/>
     <file src="..\..\bin\Debug\BeIT.MemCached.dll" target="lib/Net40"/>
