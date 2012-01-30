@@ -27,7 +27,7 @@ Similarly you can do:
 
 	Container.Init(Resolve.From(<YOUR_ASSEMBLY>));
 
-Here to mention that AutoBox is a convention based tool, it means IAccountService will search for AccountService class that implements it.
+Here to mention that AutoBox will do the mapping for a service type (interface) on demand thus making it lazy.
 
 Next you need to create a controller factory from *DefaultControllerFactory* that overrides __GetControllerInstance__. Since AutoBox is implemented using __CommonServiceLocator__ you can directly include _ServiceLocator.Current.GetInstance_ that will return the target controller with depencies properly injected.
 
